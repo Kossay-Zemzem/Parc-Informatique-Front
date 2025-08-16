@@ -1,0 +1,10 @@
+<div class="flex flex-col items-center h-full gap-6 bg-[#002752] ">
+    <div class="">
+        <img src="../../../assets/images/Logo.svg" class="px-4 pt-4">
+    </div>
+    <div class="flex flex-col gap-4">
+        <app-side-button *ngFor="let i of [0,1,2,3]" [iconName]="SidebarItems[i].icon" [content]="SidebarItems[i].name"
+            [link]="SidebarItems[i].link" [activeState]="SidebarItems[i].activeState"
+            (buttonClicked)="onSideButtonClick(i)" />
+    </div>
+</div>
