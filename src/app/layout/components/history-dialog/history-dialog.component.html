@@ -1,0 +1,16 @@
+<div class="p-4 w-[400px]">
+    <h2 class="text-xl font-bold mb-3">
+        History of {{ data.item.name }}
+    </h2>
+
+    <ul class="list-disc list-inside mb-4 max-h-40 overflow-y-auto">
+        <li *ngFor="let entry of data.item.history">{{ entry }}</li>
+    </ul>
+
+    <input type="text" placeholder="Add entry" [(ngModel)]="newEntry" class="border rounded-lg p-2 w-full mb-4" />
+
+    <div class="flex justify-end gap-2">
+        <button class="px-3 py-1 rounded-lg bg-gray-200 hover:bg-gray-300" (click)="onClose()">Cancel</button>
+        <button class="px-3 py-1 rounded-lg bg-blue-600 text-white hover:bg-blue-700" (click)="onSave()">Save</button>
+    </div>
+</div>

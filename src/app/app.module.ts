@@ -29,6 +29,12 @@ import { ProfileCardComponent } from './layout/components/profile-card/profile-c
 import { MachineListComponent } from './layout/components/machine-list/machine-list.component';
 import { MachineCardComponent } from './layout/components/machine-list/machine-card/machine-card.component';
 
+
+//Angular Material components
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HistoryDialogComponent } from './layout/components/history-dialog/history-dialog.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,17 +46,20 @@ import { MachineCardComponent } from './layout/components/machine-list/machine-c
     SideButtonComponent,
     ProfileCardComponent,
     MachineListComponent,
-    MachineCardComponent
+    MachineCardComponent,
+    HistoryDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    LucideAngularModule.pick({
+    LucideAngularModule.pick({ // Lucide icons
       LayoutDashboard, LayoutList, MapPinCheck, MapPin,
       UserRoundPlus, LogOut, Search, Bell, Pencil, Trash2, Diamond, Users, UsersRound, Timer, History,
-    })
+    }),
+    BrowserAnimationsModule, // Angular Material animations
+    MatDialogModule // Angular Material Dialog box
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr' } // Set the Angular locale language to French (for date formatting, etc.)

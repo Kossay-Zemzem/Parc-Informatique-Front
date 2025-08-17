@@ -1,6 +1,7 @@
 import { Component, Input, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { Machine } from 'src/app/models/Machine';
-
+import { MatDialog } from '@angular/material/dialog';
+import { HistoryDialogComponent } from '../../history-dialog/history-dialog.component';
 @Component({
   selector: 'app-machine-card',
   templateUrl: './machine-card.component.html',
@@ -29,11 +30,13 @@ export class MachineCardComponent {
 
   textStyleTcss: string = "font-poppins font-normal text-md";
   isEditing: boolean = false;
-  /*
-    @Output() deleteMembre: EventEmitter<number> = new EventEmitter<number>();
-    @Output() updateMembre: EventEmitter<{ id: number, numero: string }> = new EventEmitter<{ id: number, numero: string }>();
-  */
-  constructor() {
+  //tempo-----------------
+  items = [
+    { name: 'Machine A', history: ['Checked 2023', 'Updated 2024'] },
+    { name: 'Machine B', history: ['Installed 2022'] }
+  ];
+  //----------------------------------
+  constructor(private dialog: MatDialog) {
   }
   ngOnInit(): void {
     // console.log("MachineCardComponent initialized with machine:", this.machine);
@@ -54,5 +57,17 @@ export class MachineCardComponent {
 
   saveNumero(): void {
     // console.log(`Updated numero: ${this.numero}`);
+  }
+  openDialogue(item: any): void {
+    const dialogRef = this.dialog.open(HistoryDialogComponent, {
+      data: { item },
+      panelClass: 'rounded-2xl' // optional: Tailwind class for rounded dialog
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        item.history.push(result);
+      }
+    });
   }
 }
