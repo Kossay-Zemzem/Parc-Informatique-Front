@@ -32,8 +32,46 @@ export class MachineCardComponent {
   isEditing: boolean = false;
   //tempo-----------------
   items = [
-    { name: 'Machine A', history: ['Checked 2023', 'Updated 2024'] },
-    { name: 'Machine B', history: ['Installed 2022'] }
+    {
+      name: 'Machine A',
+      history: [
+        { date: '2023-01-01', description: 'Mohamed SALHI' },
+        { date: '2024-02-15', description: 'Hedi GEDA' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' }
+      ]
+    },
+    {
+      name: 'Machine B',
+      history: [
+        { date: '2022-05-10', description: 'Installed' }
+      ]
+    }
   ];
   //----------------------------------
   constructor(private dialog: MatDialog) {
@@ -61,7 +99,13 @@ export class MachineCardComponent {
   openDialogue(item: any): void {
     const dialogRef = this.dialog.open(HistoryDialogComponent, {
       data: { item },
-      panelClass: 'rounded-2xl' // optional: Tailwind class for rounded dialog
+      panelClass: 'rounded-2xl',
+      width: '60vw', // Keep responsive width
+      maxWidth: '90vw', // Allow up to 90% of viewport width for larger screens
+      minWidth: '700px', // Minimum width for small screens
+      maxHeight: '80vh', // Maximum height for larger screens
+      minHeight: '500px' // Minimum height for small screens
+      // You can also set height if needed, e.g. height: '70vh'
     });
 
     dialogRef.afterClosed().subscribe(result => {

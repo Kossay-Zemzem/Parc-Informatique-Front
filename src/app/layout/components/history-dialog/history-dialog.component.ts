@@ -26,4 +26,7 @@ export class HistoryDialogComponent {
   onSave() {
     this.dialogRef.close(this.newEntry);
   }
+  deleteEntry(index: number) {
+    // this.data.item.history.splice(index, 1);
+  }
 }

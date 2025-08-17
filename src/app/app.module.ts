@@ -12,7 +12,9 @@ import { AppComponent } from './app.component';
 //ICON IMPORTS-------------------------------------
 import {
   LucideAngularModule, LayoutDashboard, LayoutList, MapPin,
-  MapPinCheck, UserRoundPlus, LogOut, Search, Bell, Pencil, Trash2, Diamond, Users, UsersRound, Timer, History
+  MapPinCheck, UserRoundPlus, LogOut, Search, Bell, Pencil, Trash2, Diamond, Users, UsersRound, Timer, History,
+  User, StickyNote, Barcode, Banknote, ReceiptText
+
 } from 'lucide-angular';
 //-------------------------------------------------
 
@@ -56,7 +58,8 @@ import { HistoryDialogComponent } from './layout/components/history-dialog/histo
     FormsModule,
     LucideAngularModule.pick({ // Lucide icons
       LayoutDashboard, LayoutList, MapPinCheck, MapPin,
-      UserRoundPlus, LogOut, Search, Bell, Pencil, Trash2, Diamond, Users, UsersRound, Timer, History,
+      UserRoundPlus, LogOut, Search, Bell, Pencil, Trash2, Diamond, UsersRound, Timer, History,
+      Users, User, StickyNote, Barcode, Banknote, ReceiptText
     }),
     BrowserAnimationsModule, // Angular Material animations
     MatDialogModule // Angular Material Dialog box
