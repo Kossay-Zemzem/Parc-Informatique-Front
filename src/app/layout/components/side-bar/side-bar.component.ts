@@ -20,11 +20,11 @@ export class SideBarComponent {
   onSideButtonClick(i: number) {
     this.SidebarItems.forEach((item, index) => {
       item.activeState = i == index
-      /*       if(i==index){
-              item.activeState = true;
-            }else{
-              item.activeState = false;
-            } */
+      if (i == index) {
+        item.activeState = true;
+      } else {
+        item.activeState = false;
+      }
 
     });
   }

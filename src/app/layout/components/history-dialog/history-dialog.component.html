@@ -1,16 +1,16 @@
-<div class="p-4 ">
-    <h2 class="text-xl font-bold mb-3">
+<div class="flex flex-col h-full min-h-[500px] p-4">
+    <h2 class="text-xl font-bold mb-3 text-[#024a97]">
         Historique
     </h2>
 
-    <div class="mb-4 max-h-40 overflow-y-auto flex flex-col gap-2">
+    <div class="mb-4 flex flex-col gap-2 overflow-y-auto" style="max-height: 300px;">
         <div class="flex flex-row w-full font-semibold border-b pb-2">
             <span class="w-1/3">Date</span>
             <span class="w-2/3">Description</span>
         </div>
         <div *ngFor="let entry of data.item.history; let i = index" class="flex items-center border-b py-2">
             <div class="flex flex-row w-full">
-                <span class="font-semibold w-1/3">{{ entry.date | date:'shortDate' }}</span>
+                <span class="font-medium w-1/3">{{ entry.date | date:'shortDate' }}</span>
                 <span class="w-2/3">{{ entry.description }}</span>
             </div>
             <button (click)="deleteEntry(i)" class="ml-2 text-red-500 hover:text-red-700">
@@ -18,12 +18,12 @@
             </button>
         </div>
     </div>
-    <div class="mb-4">
-        <div class="flex flex-col gap-2 mb-4">
-            <input type="date" class="border rounded-lg p-2 w-full" />
-            <input type="text" placeholder="Description" class="border rounded-lg p-2 w-full" />
+    <div class="flex flex-col gap-2">
+        <div class="font-semibold mb-2">Ajouter une entrée à l'historique</div>
+        <div class="flex flex-row gap-2 mb-4">
+            <input type="date" class="border rounded-lg p-2 w-1/3" />
+            <input type="text" placeholder="Description" class="border rounded-lg p-2 w-2/3" />
         </div>
-
         <div class="flex justify-end gap-2">
             <button class="px-3 py-1 rounded-lg bg-gray-200 hover:bg-gray-300" (click)="onClose()">Cancel</button>
             <button class="px-3 py-1 rounded-lg bg-[#024a97] text-white hover:bg-[#002752]"
