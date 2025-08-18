@@ -20,18 +20,26 @@ export class SideBarComponent {
   }
 
 
-
-  onSideButtonClick(i: number) {
-    this.SidebarItems.forEach((item, index) => {
-      item.activeState = i == index
-      if (i == index) {
-        item.activeState = true;
-      } else {
-        item.activeState = false;
-      }
-
+  /* 
+    onSideButtonClick(i: number) {
+      this.SidebarItems.forEach((item, index) => {
+        item.activeState = i == index
+        if (i == index) {
+          item.activeState = true;
+        } else {
+          item.activeState = false;
+        }
+  
+      });
+      const selectedLocation = this.SidebarItems[i].link;
+      // Notify the service when the selected location changes
+      this.machineServ.setLocation(selectedLocation);
+    } */
+  onSideButtonClick(selectedItem: any) {
+    this.SidebarItems.forEach(item => {
+      item.activeState = item === selectedItem;
     });
-    const selectedLocation = this.SidebarItems[i].link;
+    const selectedLocation = selectedItem.link;
     // Notify the service when the selected location changes
     this.machineServ.setLocation(selectedLocation);
   }
