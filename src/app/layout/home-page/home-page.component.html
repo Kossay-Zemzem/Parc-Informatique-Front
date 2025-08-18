@@ -1,3 +1,9 @@
-<div>
+<div class="relative">
     <app-machine-list></app-machine-list>
+    <!-- Floating Add Button -->
+    <button
+        class="fixed bottom-8 right-12 z-50 bg-[#002752] hover:bg-[#024791] text-white rounded-full shadow-lg p-2 flex items-center justify-center transition duration-200"
+        aria-label="Add Machine">
+        <lucide-icon name="plus" [size]="35" />
+    </button>
 </div>
