@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { MachineService } from 'src/app/services/machine.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,14 @@ export class HeaderComponent {
   @Input() title: string = 'TITLE';
 
   ngOnInit() {
-    console.log('HeaderComponent initialized');
+    this.machineService.selectedLocation$.subscribe(location => {
+      // Update the header title based on the selected location
+      if (location === 'TOUS') {
+        this.title = 'Parc entiére';
+      } else {
+        this.title = location;
+      }
+    });
   }
-  constructor() { }
+  constructor(private machineService: MachineService) { }
 }

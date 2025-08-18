@@ -39,15 +39,21 @@ export class MachineListComponent {
   //   private ComiteFilterServ: MembreFilterServiceService) { }
 
   ngOnInit(): void {
+    //Subscribe to loaction changes
+    this.subscription = this.MachineServ.selectedLocation$.subscribe(location => {
+      this.MachineServ.getMachineListByLocation(location).subscribe(dataServ => {
+        this.data = dataServ; // Update the data with the machines for the selected location
+      });
+    });
 
     /*     this.MachineServ.getAllMachines().subscribe(dataServ => {
           this.data = dataServ;
         }); */
-    this.MachineServ.getMachineListByLocation("Tunis Office").subscribe(dataServ => {
-      this.data = dataServ;
-    });
-    console.log("data received is:", this.data);
-
+    /*     this.MachineServ.getMachineListByLocation("Tunis Office").subscribe(dataServ => {
+          this.data = dataServ;
+        });
+        console.log("data received is:", this.data);
+     */
     ///this.subscription = this.ComiteFilterServ.getComiteSelected().subscribe(comiteSelected => this.comiteSelected = comiteSelected);// ensures that the component is notified when the selected comite changes
     //N.B this.subscription is a Subscription objec which we need to be able to unsubscribe later when the object is destroyed and avoid memory leaks (ngOnDestroy is lifecycle hook).
 

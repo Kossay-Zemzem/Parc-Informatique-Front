@@ -44,7 +44,21 @@ export class SideButtonComponent {
   }
 
   updateActiveStyle(): void {
-    if (this.content === "Log out") {
+    /*     if (this.content === "Log out") {
+          this.textColorTcss = "text-red-500";
+          this.buttonBgTcss = "bg-transparent";
+          this.buttonHoverBgTcss = "hover:bg-[#f5ddd8]";
+          this.textHoverColorTcss = "group-hover:text-red-600";
+        } else {
+          this.textColorTcss = "text-gray-300";
+          this.buttonBgTcss = "bg-transparent";
+          this.buttonHoverBgTcss = "hover:bg-yellow-400 hover:bg-opacity-20";
+          this.textHoverColorTcss = "group-hover:text-yellow-400";
+        } */
+    if (this.activeState) {
+      this.buttonBgTcss = "bg-yellow-400 bg-opacity-30";
+      this.textColorTcss = "text-yellow-500";
+    } else if (this.content === "Log out") {
       this.textColorTcss = "text-red-500";
       this.buttonBgTcss = "bg-transparent";
       this.buttonHoverBgTcss = "hover:bg-[#f5ddd8]";
