@@ -9,7 +9,8 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class MachineService {
 
   constructor(private http: HttpClient) { }
-  private BaseURL: string = 'http://localhost:8080';
+  // private BaseURL: string = 'http://localhost:8080';
+  private BaseURL: string = ''; // relative URL
 
   private locationSubject = new BehaviorSubject<string>("TOUS");
   selectedLocation$ = this.locationSubject.asObservable();

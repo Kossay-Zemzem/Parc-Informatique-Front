@@ -30,6 +30,8 @@ export class MachineCardComponent {
 
   textStyleTcss: string = "font-poppins font-normal text-md";
   isEditing: boolean = false;
+  showCommentModal: boolean = false;
+  selectedCommentaire: string = '';
   //tempo-----------------
   items = [
     {
@@ -37,6 +39,9 @@ export class MachineCardComponent {
       history: [
         { date: '2023-01-01', description: 'Mohamed SALHI' },
         { date: '2024-02-15', description: 'Hedi GEDA' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
+        { date: '2025-05-02', description: 'Recupéré pour reparation' },
         { date: '2025-05-02', description: 'Recupéré pour reparation' },
         { date: '2025-05-02', description: 'Recupéré pour reparation' },
         { date: '2025-05-02', description: 'Recupéré pour reparation' },
@@ -113,5 +118,15 @@ export class MachineCardComponent {
         item.history.push(result);
       }
     });
+  }
+
+  openCommentModal(comment: string): void {
+    this.selectedCommentaire = comment;
+    this.showCommentModal = true;
+  }
+
+  closeCommentModal(): void {
+    this.showCommentModal = false;
+    this.selectedCommentaire = '';
   }
 }

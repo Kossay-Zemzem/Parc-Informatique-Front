@@ -14,7 +14,7 @@ import {
   LucideAngularModule, LayoutDashboard, LayoutList, MapPin,
   MapPinCheck, UserRoundPlus, LogOut, Search, Bell, Pencil, Trash2, Diamond, Users, UsersRound, Timer, History,
   User, StickyNote, Barcode, Banknote, ReceiptText,
-  Plus
+  Plus, X
 
 } from 'lucide-angular';
 //-------------------------------------------------
@@ -60,7 +60,7 @@ import { HistoryDialogComponent } from './layout/components/history-dialog/histo
     LucideAngularModule.pick({ // Lucide icons
       LayoutDashboard, LayoutList, MapPinCheck, MapPin,
       UserRoundPlus, LogOut, Search, Bell, Pencil, Trash2, Diamond, UsersRound, Timer, History,
-      Users, User, StickyNote, Barcode, Banknote, ReceiptText, Plus
+      Users, User, StickyNote, Barcode, Banknote, ReceiptText, Plus, X
     }),
     BrowserAnimationsModule, // Angular Material animations
     MatDialogModule // Angular Material Dialog box
