@@ -14,7 +14,7 @@ export class SideBarComponent {
     { name: "CPF-GAB", icon: 'Diamond', link: 'CPF-GAB', activeState: false },
     { name: "Tarfa/Bagel", icon: 'Diamond', link: 'Tarfa/Bagel', activeState: false },
     // { name: 'Log out', icon: 'log-out', link: '/home', activeState: false },
-    { name: '..................', icon: 'Diamond', link: '..................', activeState: false },
+    // { name: '..................', icon: 'Diamond', link: '..................', activeState: false },
   ];
   constructor(private machineServ: MachineService) {
   }
