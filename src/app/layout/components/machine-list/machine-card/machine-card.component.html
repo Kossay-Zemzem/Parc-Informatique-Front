@@ -5,8 +5,20 @@
                 {{machine.type}}
             </div>
         </div>
+        <!--       <div class="flex flex-col col-span-2 w-full border-0 border-red-400">
+            <img class="w-20" src="../../../../../assets/images/desktop_low.png">
+        </div> -->
         <div class="flex flex-col col-span-2 w-full border-0 border-red-400">
-            <img class="w-20" src="../../../../../assets/images/Laptop_low.png">
+            <ng-container [ngSwitch]="machine.type.toLowerCase()">
+                <img *ngSwitchCase="'desktop'" class="w-20" src="../../../../../assets/images/desktop_low.png"
+                    alt="Desktop" />
+                <img *ngSwitchCase="'laptop'" class="w-20" src="../../../../../assets/images/Laptop_low.png"
+                    alt="Laptop" />
+                <img *ngSwitchCase="'workstation'" class="w-20" src="../../../../../assets/images/workstation_low.png"
+                    alt="Workstation" />
+                <img *ngSwitchDefault class="w-20" src="../../../../../assets/images/web-icon-placeholder-3.svg"
+                    alt="Default" />
+            </ng-container>
         </div>
         <div class="flex flex-col col-span-4 gap-1 h-full border-0 border-red-400 min-w-0">
             <div class="flex flex-row font-semibold justify-between items-center min-w-0">
