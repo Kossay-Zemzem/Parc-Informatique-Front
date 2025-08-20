@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Historique } from 'src/app/models/Historique';
+import { HistoriqueCreateDTO } from 'src/app/models/HistoriqueCreateDTO';
 import { HistoryService } from 'src/app/services/history.service';
 @Component({
   selector: 'app-history-dialog',
@@ -8,12 +9,8 @@ import { HistoryService } from 'src/app/services/history.service';
   styleUrls: ['./history-dialog.component.css']
 })
 export class HistoryDialogComponent {
-  testEntry: Historique = {
-    date: new Date(),
-    Description: ''
-  };
-  history: any[] = [];
-  newDate: string = '';
+  history: Historique[] = [];
+  newDate: Date = new Date();
   newDescription: string = '';
   constructor(
     /*     public dialogRef: MatDialogRef<HistoryDialogComponent>,
@@ -25,37 +22,33 @@ export class HistoryDialogComponent {
 
   ngOnInit(): void {
     this.loadHistory();
-    /*     this.historyService.addHistoryLog(this.data.machineId, testEntry).subscribe(() => {
-          this.loadHistory();
-          this.newDate = '';
-          this.newDescription = '';
-        }); */
-
   }
 
   loadHistory() {
     this.historyService.getHistoryLogs(this.data.machineId).subscribe(res => {
       this.history = res;
     });
+    console.log("history:", this.history);
   }
 
   addEntry() {
     if (!this.newDate || !this.newDescription) return;
 
-    const entry = { date: this.newDate, description: this.newDescription };
-    this.historyService.addHistoryLog(this.data.machineId, entry).subscribe(() => {
-      this.loadHistory();
-      this.newDate = '';
+    const entry: HistoriqueCreateDTO = { date: this.newDate, description: this.newDescription };
+    this.historyService.addHistoryLog(this.data.machineId, entry).subscribe((createdEntry: Historique) => {
+      this.history.push(createdEntry); // Add the new entry directly and 
+      // this.loadHistory(); // Uncomment if you want to reload the entire history
+      this.newDate = new Date();
       this.newDescription = '';
     });
   }
 
 
-  /*   deleteEntry(entryId: number) {
-      this.historyService.deleteHistoryLog(entryId).subscribe(() => {
-        this.loadHistory();
-      });
-    } */
+  deleteEntry(entryId: number) {
+    this.historyService.deleteHistoryLog(this.data.machineId, entryId).subscribe(() => {
+      this.loadHistory();
+    });
+  }
 
   onClose() {
     this.dialogRef.close();

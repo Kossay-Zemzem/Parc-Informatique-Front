@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Historique } from '../models/Historique';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { HistoriqueCreateDTO } from '../models/HistoriqueCreateDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +13,16 @@ export class HistoryService {
 
   // Fetch history logs for a machine
   getHistoryLogs(machineId: number): Observable<Historique[]> {
-    return this.http.get<Historique[]>(this.BaseURL + "machine/" + machineId + "/history");
+    return this.http.get<Historique[]>(this.BaseURL + "/machine/" + machineId + "/history");
   }
 
   // Add a new history log
-  addHistoryLog(machineId: number, log: Historique): void {
-    this.http.post<Historique>(this.BaseURL + "machine/" + machineId + "/history", log).subscribe();
+  addHistoryLog(machineId: number, log: HistoriqueCreateDTO): Observable<Historique> {
+    return this.http.post<Historique>(this.BaseURL + "/machine/" + machineId + "/history", log);
   }
 
   // Delete a history log
-  deleteHistoryLog(machineId: number, logId: number): void {
-    this.http.delete<void>(this.BaseURL + "machine/" + machineId + "/history/" + logId).subscribe();
+  deleteHistoryLog(machineId: number, logId: number): Observable<void> {
+    return this.http.delete<void>(this.BaseURL + "/machine/" + machineId + "/history/" + logId);
   }
 }
