@@ -8,7 +8,6 @@ import { Component, Input, Output, EventEmitter, SimpleChanges } from '@angular/
 export class SideButtonComponent {
   @Input() content = "unknown";
   @Input() iconName = "";
-  @Input() link = "";
 
   @Input() activeState: boolean = false;
   @Output() buttonClicked = new EventEmitter();

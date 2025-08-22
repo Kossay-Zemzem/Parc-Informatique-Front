@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Machine } from 'src/app/models/Machine';
 import { MachineService } from 'src/app/services/machine.service';
 import { Observable, Subscription } from 'rxjs';
+import { LocationService } from 'src/app/services/location.service';
 
 @Component({
   selector: 'app-machine-list',
@@ -36,12 +37,14 @@ export class MachineListComponent {
 
   private subscription: Subscription = new Subscription(); //subscription pour le comite selectionne
 
-  constructor(private MachineServ: MachineService,) { }
+  constructor(private MachineServ: MachineService,
+    private LocationServ: LocationService
+  ) { }
   //   private ComiteFilterServ: MembreFilterServiceService) { }
 
   ngOnInit(): void {
     //Subscribe to loaction changes
-    this.subscription = this.MachineServ.selectedLocation$.subscribe(location => {
+    this.subscription = this.LocationServ.selectedLocation$.subscribe(location => {
       this.MachineServ.getMachineListByLocation(location).subscribe(dataServ => {
         this.data = dataServ; // Update the data with the machines for the selected location
       });

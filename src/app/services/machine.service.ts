@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Machine } from '../models/Machine';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { Location } from '../models/Location';
 
 @Injectable({
   providedIn: 'root'
@@ -12,35 +13,24 @@ export class MachineService {
   private BaseURL: string = 'http://localhost:8080';
   // private BaseURL: string = ''; // relative URL
 
-  private locationSubject = new BehaviorSubject<string>("TOUS");
-  selectedLocation$ = this.locationSubject.asObservable();
-
-  setLocation(location: string) {
-    this.locationSubject.next(location); // Update the selected location which will trigger the subscribers
-  }
 
   getAllMachines(): Observable<Machine[]> {   //for developement only , not for production !!!
     return this.http.get<Machine[]>(this.BaseURL + "/parc");
   }
-  /*   getMachineListByLocation(location: string): Observable<Machine[]> {
-      return this.http.get<Machine[]>(this.BaseURL + '/listMachine',
-        { params: { emplacement: location } }
-      );
-    } */
 
-  getMachineListByLocation(location: string): Observable<Machine[]> { //keeps the location selected updated
+  getMachineListByLocation(location: Location): Observable<Machine[]> { //keeps the location selected updated
     //location and their id association:
-    const locationMap: { [key: string]: number } = { //temporary workaround , should fetch this from backend using an api call
-      "Tunis Office": 152,
-      "Sfax": 102,
-      "Bagel": 1,
-      "bagel2000": 52
-    };
-    if (location === "TOUS") {
+    // const locationMap: { [key: string]: number } = { //temporary workaround , should fetch this from backend using an api call
+    //   "Tunis Office": 152,
+    //   "Sfax": 102,
+    //   "Bagel": 1,
+    //   "bagel2000": 52
+    // };
+    if (location.id === -1) {
       return this.http.get<Machine[]>(`${this.BaseURL}/parc`);
     } else {
       return this.http.get<Machine[]>(this.BaseURL + '/listMachine',
-        { params: { locationId: locationMap[location] } }
+        { params: { locationId: location.id } }
       );
     }
   }

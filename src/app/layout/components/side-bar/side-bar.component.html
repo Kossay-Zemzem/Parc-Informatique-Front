@@ -8,8 +8,8 @@
             [&::-webkit-scrollbar-thumb]:bg-gray-300
             [&::-webkit-scrollbar-thumb]:rounded-full
             hover:[&::-webkit-scrollbar-thumb]:bg-gray-400">
-        <app-side-button *ngFor="let item of SidebarItems; let i = index" [iconName]="item.icon" [content]="item.name"
-            [link]="item.link" [activeState]="item.activeState" (buttonClicked)="onSideButtonClick(item)" />
+        <app-side-button *ngFor="let item of SidebarItems;" [iconName]="item.icon" [content]="item.name"
+            [activeState]="item.activeState" (buttonClicked)="onSideButtonClick(item)" />
     </div>
 
 </div>
