@@ -6,7 +6,9 @@ export interface Machine {
     serviceTag: string;
     reseau: string;
     assignedUser: string;
-    emplacement: string;
+    // emplacement: string;
+    locationId: number;
+    locationName: string; // Renamed from emplacement for clarity
     //caracteristique
     os: string;
     cpu: string;

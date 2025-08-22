@@ -29,11 +29,18 @@ export class MachineService {
     } */
 
   getMachineListByLocation(location: string): Observable<Machine[]> { //keeps the location selected updated
+    //location and their id association:
+    const locationMap: { [key: string]: number } = { //temporary workaround , should fetch this from backend using an api call
+      "Tunis Office": 152,
+      "Sfax": 102,
+      "Bagel": 1,
+      "bagel2000": 52
+    };
     if (location === "TOUS") {
       return this.http.get<Machine[]>(`${this.BaseURL}/parc`);
     } else {
       return this.http.get<Machine[]>(this.BaseURL + '/listMachine',
-        { params: { emplacement: location } }
+        { params: { locationId: locationMap[location] } }
       );
     }
   }
