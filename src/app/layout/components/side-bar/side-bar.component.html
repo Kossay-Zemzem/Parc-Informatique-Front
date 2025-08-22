@@ -11,5 +11,15 @@
         <app-side-button *ngFor="let item of SidebarItems;" [iconName]="item.icon" [content]="item.name"
             [activeState]="item.activeState" (buttonClicked)="onSideButtonClick(item)" />
     </div>
-
+    <div class="flex py-4 w-full mt-auto justify-around">
+        <button class="hover:bg-gray-700 rounded-full p-2">
+            <lucide-icon name="plus" size="24" color="white"></lucide-icon>
+        </button>
+        <button class="hover:bg-gray-700 rounded-full p-2">
+            <lucide-icon name="Pencil" size="24" color="white"></lucide-icon>
+        </button>
+        <button class="hover:bg-gray-700 rounded-full p-2">
+            <lucide-icon name="trash-2" size="24" color="white"></lucide-icon>
+        </button>
+    </div>
 </div>

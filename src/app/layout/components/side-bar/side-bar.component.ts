@@ -30,9 +30,11 @@ export class SideBarComponent {
     { name: 'test test', icon: 'Diamond', link: '..................', activeState: false }
   ]; */
 
-  SidebarItems = [ //linkId should be the LocationId
-    //-1 is reserved for TOUS 
-    // 0 is initial value before the IDs are fetched using the service
+  //linkId should be the LocationId
+  //-1 is reserved for TOUS 
+  // 0 is initial value before the IDs are fetched using the service
+  SidebarItems = [
+
     { name: 'TOUS', icon: 'layout-list', linkId: -1, activeState: true },
     // { name: 'Unknown', icon: 'Diamond', linkId: 0, activeState: false },
   ]
