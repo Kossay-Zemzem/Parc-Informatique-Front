@@ -106,9 +106,26 @@ export class SideBarComponent {
   addLocation(locationName: String) {
     this.locationServ.addLocation(locationName).subscribe();
   }
+
+  onAddLocationConfirmClick() {
+    if (this.newLocationName.trim()) {
+      this.addLocation(this.newLocationName.trim());
+      this.showAddLocationInput = false;
+      this.newLocationName = '';
+    }
+  }
+
+  onAddLocationCancelClick() {
+    this.showAddLocationInput = false;
+    this.newLocationName = '';
+  }
   //Editing location-----------------------------------------------------
   onEditModeClick() {
     this.editMode = true;
+    setTimeout(() => {
+      const input = document.querySelector('input[type="text"][ng-reflect-model]');
+      if (input) (input as HTMLInputElement).focus();
+    }, 0);
     this.SidebarItems.forEach(item => {
       if (item.linkId !== -1) {
         this.editLocationNames[item.linkId] = item.name;
