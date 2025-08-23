@@ -9,6 +9,7 @@ import { LocationService } from 'src/app/services/location.service';
 export class HeaderComponent {
 
   @Input() title: string = 'TITLE';
+  isEditMode: boolean = false;
 
   ngOnInit() {
     this.locationService.selectedLocation$.subscribe(location => {

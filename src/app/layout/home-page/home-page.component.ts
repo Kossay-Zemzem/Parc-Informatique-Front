@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-home-page',
@@ -6,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent {
-  //To be imported later (trailing components)
+
+  constructor(private router: Router) { }
+
+  onAddMachineClick() {
+    //routing to add machine page
+    this.router.navigate(['/machine/new']);
+    console.log("Navigating to add machine page");
+  }
 }

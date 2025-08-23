@@ -1,0 +1,119 @@
+<div class="flex flex-col h-screen w-full p-4 bg-white rounded-lg">
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class=" flex flex-col justify-between space-y-2">
+        <!-- Type & Utilisateur assigné -->
+        <div class="flex flex-col md:flex-row gap-4">
+            <div class="flex-1">
+                <label class="block mb-1 font-medium">Type</label>
+                <select formControlName="type" class="w-full border rounded px-3 py-2">
+                    <option value="">-- Sélectionner --</option>
+                    <option value="Desktop">Desktop</option>
+                    <option value="Laptop">Laptop</option>
+                    <option value="Workstation">Workstation</option>
+                </select>
+            </div>
+            <div class="flex-1">
+                <label class="block mb-1 font-medium">Utilisateur Assigné</label>
+                <input type="text" formControlName="assignedUser" class="w-full border rounded px-3 py-2" />
+            </div>
+        </div>
+
+        <!-- Marque & Modèle -->
+        <div class="flex flex-col md:flex-row gap-4">
+            <div class="flex-1">
+                <label class="block mb-1 font-medium">Marque</label>
+                <input type="text" formControlName="marque" class="w-full border rounded px-3 py-2" />
+            </div>
+            <div class="flex-1">
+                <label class="block mb-1 font-medium">Modèle</label>
+                <input type="text" formControlName="modele" class="w-full border rounded px-3 py-2" />
+            </div>
+        </div>
+
+        <!-- Service Tag & Réseau -->
+        <div class="flex flex-col md:flex-row gap-4">
+            <div class="flex-1">
+                <label class="block mb-1 font-medium">Service Tag</label>
+                <input type="text" formControlName="serviceTag" class="w-full border rounded px-3 py-2" />
+            </div>
+            <div class="flex-1">
+                <label class="block mb-1 font-medium">Réseau</label>
+                <input type="text" formControlName="reseau" class="w-full border rounded px-3 py-2" />
+            </div>
+        </div>
+
+        <!-- Caractéristiques -->
+        <div class="flex flex-col md:flex-row gap-4">
+            <div class="flex-1">
+                <label class="block mb-1 font-medium">Système d’exploitation</label>
+                <input type="text" formControlName="os" class="w-full border rounded px-3 py-2" />
+            </div>
+            <div class="flex-1">
+                <label class="block mb-1 font-medium">Processeur (CPU)</label>
+                <input type="text" formControlName="cpu" class="w-full border rounded px-3 py-2" />
+            </div>
+        </div>
+
+        <!-- RAM, Type de stockage & Taille de stockage -->
+        <div class="flex flex-row gap-4 items-end justify-center">
+            <div class="flex flex-col" style="max-width: 140px; width: 100%;">
+                <label class="block mb-1 font-medium">RAM (Go)</label>
+                <input type="number" formControlName="ram" min="1" max="100000" step="1"
+                    class="border rounded px-2 py-1 w-full" />
+            </div>
+            <div class="flex flex-col" style="max-width: 180px; width: 100%;">
+                <label class="block mb-1 font-medium">Type de Stockage</label>
+                <select formControlName="typeStockage" class="border rounded px-3 py-2 w-full">
+                    <option value="">-- Sélectionner --</option>
+                    <option value="HDD">HDD</option>
+                    <option value="SSD">SSD</option>
+                </select>
+            </div>
+            <div class="flex flex-col" style="max-width: 180px; width: 100%;">
+                <label class="block mb-1 font-medium">Taille de Stockage (Go)</label>
+                <input type="number" formControlName="tailleStockage" min="1" max="100000" step="1"
+                    class="border rounded px-2 py-1 w-full" />
+            </div>
+        </div>
+
+        <!-- Dates -->
+        <div class="flex flex-col md:flex-row gap-4">
+            <div class="flex-1">
+                <label class="block mb-1 font-medium">Date d’Achat</label>
+                <input type="date" formControlName="dateAchat" class="w-full border rounded px-3 py-2" />
+            </div>
+            <div class="flex-1">
+                <label class="block mb-1 font-medium">Expiration de la Garantie</label>
+                <input type="date" formControlName="dateExpirationGarantie" class="w-full border rounded px-3 py-2" />
+            </div>
+        </div>
+
+        <!-- Vendeur & Commentaire -->
+        <div class="flex flex-col md:flex-row gap-4">
+            <div class="flex-1">
+                <label class="block mb-1 font-medium">Emplacement</label>
+                <select formControlName="location" class="w-full border rounded px-3 py-2">
+                    <option value="">-- Sélectionner --</option>
+                    <option *ngFor="let loc of locations" [ngValue]="loc">{{ loc.name }}</option>
+                </select>
+            </div>
+            <div class="flex-1">
+                <label class="block mb-1 font-medium">Vendeur</label>
+                <input type="text" formControlName="vendeur" class="w-full border rounded px-3 py-2" />
+            </div>
+            <div class="flex-1">
+                <label class="block mb-1 font-medium">Commentaire</label>
+                <textarea formControlName="commentaire" rows="2" class="w-full border rounded px-3 py-2"></textarea>
+            </div>
+
+        </div>
+
+        <!-- Submit Button -->
+        <div class="pt-2 flex justify-end">
+            <button type="submit" [disabled]="form.invalid"
+                class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded disabled:opacity-50">
+                {{ isEditMode ? 'Mettre à jour' : 'Créer' }}
+            </button>
+        </div>
+    </form>
+</div>

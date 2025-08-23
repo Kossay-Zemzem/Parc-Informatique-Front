@@ -35,6 +35,14 @@ export class MachineService {
     }
   }
 
+  createMachine(machine: Machine): Observable<Machine> {
+    return this.http.post<Machine>(`${this.BaseURL}/machine`, machine);
+  }
+
+  /*   getMachineById(id: string): Observable<Machine> {
+  
+    } */
+
   /*     return [
         {
           id: 1,

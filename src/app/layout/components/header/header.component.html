@@ -1,9 +1,18 @@
 <div class=" flex flex-row justify-between pr-8 pl-4 py-6 w-full">
-    <div class="flex flex-initia">
-        <div class="font-poppins font-medium text-4xl z-10">
+    <div class="flex items-center">
+        <div class="font-poppins font-medium text-4xl">
             <!-- Parc entiére -->
             {{ title }}
         </div>
+        <!--vertical line-->
+        <div class="w-0.5 h-8 bg-[#002752] rounded-full mx-1"></div>
+        <div class="flex flex-row align-bottom">
+            <h2 class="text-2xl font-semibold">
+                {{ isEditMode ? 'Modifier la Machine' : 'Créer une Nouvelle Machine' }}
+            </h2>
+        </div>
     </div>
+
+
     <app-profile-card></app-profile-card>
 </div>

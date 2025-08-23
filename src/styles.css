@@ -20,5 +20,26 @@
         /* Firefox */
     }
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Snackbar styles (NOT WORKING FOR NOW)*/
+.snackbar-success {
+    background-color: #43a047 !important;
+    /* Green */
+    color: #fff !important;
+}
+
+.snackbar-error {
+    background-color: #e53935 !important;
+    /* Red */
+    color: #fff !important;
+}

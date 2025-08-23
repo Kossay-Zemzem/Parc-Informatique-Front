@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { LocationService } from 'src/app/services/location.service';
 import { MachineService } from 'src/app/services/machine.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
@@ -46,7 +47,7 @@ export class SideBarComponent {
   editLocationNames: { [key: number]: string } = {};
 
   private subscription: Subscription = new Subscription();
-  constructor(private locationServ: LocationService) {
+  constructor(private router: Router, private locationServ: LocationService) {
   }
 
   ngOnInit() {
@@ -65,6 +66,10 @@ export class SideBarComponent {
       });
     });
     console.log("Sidebar items are:", this.SidebarItems);
+  }
+
+  onLogoClick() {
+    this.router.navigate(['/home']);
   }
 
   onSideButtonClick(selectedItem: any) {
