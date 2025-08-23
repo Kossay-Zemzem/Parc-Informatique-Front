@@ -1,4 +1,5 @@
-<div class="flex flex-col items-center h-full gap-6 bg-[#002752] ">
+<div class="flex flex-col items-center h-full gap-6 bg-[#002752] " (keydown)="onEditLocationInputKeydown($event)"
+    tabindex="0">
     <div class="">
         <img src="../../../assets/images/Logo.svg" class="px-4 pt-4">
     </div>
@@ -8,17 +9,43 @@
             [&::-webkit-scrollbar-thumb]:bg-gray-300
             [&::-webkit-scrollbar-thumb]:rounded-full
             hover:[&::-webkit-scrollbar-thumb]:bg-gray-400">
-        <app-side-button *ngFor="let item of SidebarItems;" [iconName]="item.icon" [content]="item.name"
-            [activeState]="item.activeState" (buttonClicked)="onSideButtonClick(item)" />
+        <ng-container *ngFor="let item of SidebarItems">
+            <ng-container *ngIf="!editMode || item.linkId === -1">
+                <app-side-button [iconName]="item.icon" [content]="item.name" [activeState]="item.activeState"
+                    (buttonClicked)="onSideButtonClick(item)" />
+            </ng-container>
+            <ng-container *ngIf="editMode && item.linkId !== -1">
+                <div class="flex items-center gap-2">
+                    <input type="text" [(ngModel)]="editLocationNames[item.linkId]"
+                        class="rounded bg-[#002752] border border-gray-600 px-3 py-2 text-white placeholder-gray-300 shadow focus:outline-none focus:border-yellow-400" />
+                    <lucide-icon name="Diamond" size="20" color="white"></lucide-icon>
+                </div>
+            </ng-container>
+        </ng-container>
+        <div *ngIf="showAddLocationInput" class="flex justify-center  pb-2">
+            <input id="add-location-input" type="text" [(ngModel)]="newLocationName"
+                (keydown)="onAddLocationInputKeydown($event)" placeholder="Enter location name"
+                class="rounded bg-[#002752] border border-gray-600 px-3 py-2 text-white placeholder-gray-300 shadow focus:outline-none focus:border-yellow-400" />
+        </div>
     </div>
-    <div class="flex py-4 w-full mt-auto justify-around">
-        <button class="hover:bg-gray-700 rounded-full p-2">
+    <div class="flex w-full py-4 mt-auto justify-around">
+        <button class="hover:bg-gray-700 rounded-full p-2" (click)="onAddLocationIconClick()" *ngIf="!editMode">
             <lucide-icon name="plus" size="24" color="white"></lucide-icon>
         </button>
-        <button class="hover:bg-gray-700 rounded-full p-2">
-            <lucide-icon name="Pencil" size="24" color="white"></lucide-icon>
-        </button>
-        <button class="hover:bg-gray-700 rounded-full p-2">
+        <ng-container *ngIf="!editMode">
+            <button class="hover:bg-gray-700 rounded-full p-2" (click)="onEditModeClick()">
+                <lucide-icon name="Pencil" size="24" color="white"></lucide-icon>
+            </button>
+        </ng-container>
+        <ng-container *ngIf="editMode">
+            <button class="hover:bg-gray-700 rounded-full p-2" (click)="onEditConfirmClick()">
+                <lucide-icon name="check" size="24" color="white"></lucide-icon>
+            </button>
+            <button class="hover:bg-gray-700 rounded-full p-2" (click)="onEditCancelClick()">
+                <lucide-icon name="x" size="24" color="white"></lucide-icon>
+            </button>
+        </ng-container>
+        <button class="hover:bg-gray-700 rounded-full p-2" *ngIf="!editMode">
             <lucide-icon name="trash-2" size="24" color="white"></lucide-icon>
         </button>
     </div>

@@ -39,6 +39,11 @@ export class SideBarComponent {
     // { name: 'Unknown', icon: 'Diamond', linkId: 0, activeState: false },
   ]
 
+  showAddLocationInput = false;
+  newLocationName = '';
+
+  editMode = false;
+  editLocationNames: { [key: number]: string } = {};
 
   private subscription: Subscription = new Subscription();
   constructor(private locationServ: LocationService) {
@@ -50,6 +55,10 @@ export class SideBarComponent {
 
     // Subscribe to the locations observable to update SidebarItems when locations are fetched
     this.subscription = this.locationServ.locations$.subscribe(locations => {
+      //Always start with TOUS
+      this.SidebarItems = [
+        { name: 'TOUS', icon: 'layout-list', linkId: -1, activeState: true }
+      ];
       // Add fetched locations to SidebarItems
       locations.forEach(location => {
         this.SidebarItems.push({ name: location.name, icon: 'Diamond', linkId: location.id, activeState: false });
@@ -68,6 +77,61 @@ export class SideBarComponent {
       name: selectedItem.name
     };
     this.locationServ.setLocation(selectedLocation);
+  }
+  //Adding location-----------------------------------------------------
+  onAddLocationIconClick() {
+    this.showAddLocationInput = true;
+    setTimeout(() => {
+      const input = document.getElementById('add-location-input');
+      if (input) input.focus();
+    }, 0);
+  }
+
+  onAddLocationInputKeydown(event: KeyboardEvent) {
+    if (event.key === 'Enter' && this.newLocationName.trim()) {
+      this.addLocation(this.newLocationName.trim());
+      this.showAddLocationInput = false;
+      this.newLocationName = '';
+    } else if (event.key === 'Escape') {
+      this.showAddLocationInput = false;
+      this.newLocationName = '';
+    }
+  }
+
+  addLocation(locationName: String) {
+    this.locationServ.addLocation(locationName).subscribe();
+  }
+  //Editing location-----------------------------------------------------
+  onEditModeClick() {
+    this.editMode = true;
+    this.SidebarItems.forEach(item => {
+      if (item.linkId !== -1) {
+        this.editLocationNames[item.linkId] = item.name;
+      }
+    });
+  }
+
+  onEditConfirmClick() {
+    Object.keys(this.editLocationNames).forEach(id => {
+      const newName = this.editLocationNames[+id];
+      const item = this.SidebarItems.find(i => i.linkId === +id);
+      if (item && item.name !== newName && newName.trim()) {
+        this.locationServ.editLocation(+id, newName.trim()).subscribe();
+      }
+    });
+    this.editMode = false;
+  }
+
+  onEditCancelClick() {
+    this.editMode = false;
+    this.editLocationNames = {};
+  }
+
+
+  onEditLocationInputKeydown(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      this.editMode = false;
+    }
   }
 
   // unsubscribe from all subscriptions
