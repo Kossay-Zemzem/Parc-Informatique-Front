@@ -102,4 +102,7 @@ export class MachineSetupPageComponent {
       }
     }
   }
+  onCancel(): void {
+    this.router.navigate(['/home']); // Navigate to home
+  }
 }
