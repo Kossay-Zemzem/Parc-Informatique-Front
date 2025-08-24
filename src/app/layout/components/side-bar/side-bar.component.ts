@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { LocationService } from 'src/app/services/location.service';
 import { MachineService } from 'src/app/services/machine.service';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
@@ -35,7 +35,6 @@ export class SideBarComponent {
   //-1 is reserved for TOUS 
   // 0 is initial value before the IDs are fetched using the service
   SidebarItems = [
-
     { name: 'TOUS', icon: 'layout-list', linkId: -1, activeState: true },
     // { name: 'Unknown', icon: 'Diamond', linkId: 0, activeState: false },
   ]
@@ -46,7 +45,11 @@ export class SideBarComponent {
   editMode = false;
   editLocationNames: { [key: number]: string } = {};
 
+  isSideBarActive: boolean = true;
+
   private subscription: Subscription = new Subscription();
+  private routerSub!: Subscription;
+
   constructor(private router: Router, private locationServ: LocationService) {
   }
 
@@ -66,6 +69,23 @@ export class SideBarComponent {
       });
     });
     console.log("Sidebar items are:", this.SidebarItems);
+
+    /// Listen to router events for route changes to disable sidebar
+    this.routerSub = this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.updateSideBarState(event.urlAfterRedirects);
+      }
+    });
+
+    // Initial check
+    this.updateSideBarState(this.router.url);
+  }
+
+  //Track sidebar state 
+  private updateSideBarState(url: string) {
+    this.isSideBarActive = !(
+      url.startsWith('/machine/new') || url.startsWith('/machine/edit/')
+    );
   }
 
   onLogoClick() {
@@ -73,6 +93,7 @@ export class SideBarComponent {
   }
 
   onSideButtonClick(selectedItem: any) {
+    if (!this.isSideBarActive) return; // Prevent action if in edit mode or buttons are disabled
     this.SidebarItems.forEach(item => {
       item.activeState = item === selectedItem;
     });
@@ -85,6 +106,7 @@ export class SideBarComponent {
   }
   //Adding location-----------------------------------------------------
   onAddLocationIconClick() {
+    if (!this.isSideBarActive) return; // Prevent action if in edit mode or buttons are disabled
     this.showAddLocationInput = true;
     setTimeout(() => {
       const input = document.getElementById('add-location-input');
@@ -121,6 +143,7 @@ export class SideBarComponent {
   }
   //Editing location-----------------------------------------------------
   onEditModeClick() {
+    if (!this.isSideBarActive) return; // Prevent action if in edit mode or buttons are disabled
     this.editMode = true;
     setTimeout(() => {
       const input = document.querySelector('input[type="text"][ng-reflect-model]');
@@ -155,9 +178,15 @@ export class SideBarComponent {
       this.editMode = false;
     }
   }
+  //Delete location --------------------------------------
+  onDeleteLocationClick(locationId: number) {
+    if (!this.isSideBarActive) return; // Prevent action if in edit mode or buttons are disabled
+    //TODO delete logic
+  }
 
   // unsubscribe from all subscriptions
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    if (this.routerSub) this.routerSub.unsubscribe();
   }
 }

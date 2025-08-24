@@ -5,14 +5,12 @@
             {{ title }}
         </div>
         <!--vertical line-->
-        <div class="w-0.5 h-8 bg-[#002752] rounded-full mx-1"></div>
-        <div class="flex flex-row align-bottom">
+        <div *ngIf="isSubTitle" class="w-0.5 h-9 bg-black rounded-full mx-2"></div>
+        <div *ngIf="isSubTitle" class="flex flex-row items-end align-bottom text-[#002752]">
             <h2 class="text-2xl font-semibold">
                 {{ isEditMode ? 'Modifier la Machine' : 'Créer une Nouvelle Machine' }}
             </h2>
         </div>
     </div>
-
-
     <app-profile-card></app-profile-card>
 </div>
