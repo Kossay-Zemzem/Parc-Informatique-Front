@@ -2,6 +2,7 @@ import { Component, Input, SimpleChanges, Output, EventEmitter } from '@angular/
 import { Machine } from 'src/app/models/Machine';
 import { MatDialog } from '@angular/material/dialog';
 import { HistoryDialogComponent } from '../../history-dialog/history-dialog.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-machine-card',
   templateUrl: './machine-card.component.html',
@@ -33,7 +34,9 @@ export class MachineCardComponent {
   isEditing: boolean = false;
   showCommentModal: boolean = false;
   selectedCommentaire: string = '';
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog,
+    private router: Router
+  ) {
   }
   ngOnInit(): void {
     // console.log("MachineCardComponent initialized with machine:", this.machine);
@@ -43,18 +46,12 @@ export class MachineCardComponent {
       this.machine = changes['machine'].currentValue;
     }
   }
-
-  supprimerMembre(): void {
-    console.log("Suppression du membre avec l'ID: ");
+  editMachine(machine: Machine): void {
+    if (machine.id != 0) {
+      this.router.navigate(['/machine/edit/', machine.id]);
+    }
   }
 
-  modifierMembre(): void {
-    this.isEditing = !this.isEditing;
-  }
-
-  saveNumero(): void {
-    // console.log(`Updated numero: ${this.numero}`);
-  }
   openDialogue(id: number): void {
     const dialogRef = this.dialog.open(HistoryDialogComponent, {
       data: { machineId: id },

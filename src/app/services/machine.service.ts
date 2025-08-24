@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Machine } from '../models/Machine';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Location } from '../models/Location';
+import { MachineByIdDTO } from '../models/MachineByIdDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -19,13 +20,6 @@ export class MachineService {
   }
 
   getMachineListByLocation(location: Location): Observable<Machine[]> { //keeps the location selected updated
-    //location and their id association:
-    // const locationMap: { [key: string]: number } = { //temporary workaround , should fetch this from backend using an api call
-    //   "Tunis Office": 152,
-    //   "Sfax": 102,
-    //   "Bagel": 1,
-    //   "bagel2000": 52
-    // };
     if (location.id === -1) {
       return this.http.get<Machine[]>(`${this.BaseURL}/parc`);
     } else {
@@ -39,9 +33,13 @@ export class MachineService {
     return this.http.post<Machine>(`${this.BaseURL}/machine`, machine);
   }
 
-  /*   getMachineById(id: string): Observable<Machine> {
-  
-    } */
+  getMachineById(id: string): Observable<MachineByIdDTO> {
+    return this.http.get<MachineByIdDTO>(`${this.BaseURL}/machine/${id}`);
+  }
+
+  updateMachine(id: string, machine: Machine): Observable<Machine> {
+    return this.http.patch<Machine>(`${this.BaseURL}/machine/${id}`, machine);
+  }
 
   /*     return [
         {
