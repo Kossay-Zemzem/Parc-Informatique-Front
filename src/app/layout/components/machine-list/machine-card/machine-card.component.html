@@ -88,7 +88,7 @@
                 class="flex flex-row gap-1 items-center overflow-hidden text-ellipsis cursor-pointer hover:underline hover:bg-blue-50 rounded transition min-w-0"
                 (click)="openCommentModal(machine.commentaire)">
                 <span class="font-semibold">Commentaire:</span>
-                <span class="truncate min-w-0">{{machine.commentaire}}</span>
+                <span class="truncate min-w-0 block w-40">{{machine.commentaire}}</span>
             </button>
         </div>
     </div>
@@ -133,6 +133,6 @@
                 <lucide-angular name="x" [size]="25" />
             </button>
         </div>
-        <div class="font-medium text-gray-800 whitespace-pre-line">{{selectedCommentaire}}</div>
+        <div class="font-medium text-gray-800 whitespace-pre-line break-words">{{selectedCommentaire}}</div>
     </div>
 </div>

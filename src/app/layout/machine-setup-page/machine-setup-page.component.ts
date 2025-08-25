@@ -87,7 +87,7 @@ export class MachineSetupPageComponent {
       dateAchat: [''],
       dateExpirationGarantie: [''],
       vendeur: [''],
-      commentaire: [''],
+      commentaire: ['', [Validators.maxLength(500)]], // Enforce max length of 500 characters (database's max character length)
       location: [null, Validators.required]
     });
   }

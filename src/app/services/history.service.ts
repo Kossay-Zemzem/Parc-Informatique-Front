@@ -10,6 +10,7 @@ import { HistoriqueCreateDTO } from '../models/HistoriqueCreateDTO';
 export class HistoryService {
   constructor(private http: HttpClient) { }
   private BaseURL: string = 'http://localhost:8080';
+  // private BaseURL: string = '/api'; //relative URL for deplyement (served from backend)
 
   // Fetch history logs for a machine
   getHistoryLogs(machineId: number): Observable<Historique[]> {

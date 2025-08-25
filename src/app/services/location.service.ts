@@ -8,6 +8,7 @@ import { Location } from '../models/Location';
 })
 export class LocationService {
   private BaseURL = 'http://localhost:8080';
+  // private BaseURL: string = '/api'; //relative URL for deplyement (served from backend)
 
   // Holds the currently selected location
   private selectedLocationSubject = new BehaviorSubject<Location>({ id: -1, name: "TOUS" });

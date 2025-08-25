@@ -12,7 +12,7 @@ export class MachineService {
 
   constructor(private http: HttpClient) { }
   private BaseURL: string = 'http://localhost:8080';
-  // private BaseURL: string = ''; // relative URL
+  // private BaseURL: string = '/api'; //relative URL for deplyement (served from backend)
 
 
   getAllMachines(): Observable<Machine[]> {   //for developement only , not for production !!!
