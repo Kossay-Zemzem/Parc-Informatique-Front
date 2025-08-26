@@ -63,10 +63,18 @@ export class SideBarComponent {
       this.SidebarItems = [
         { name: 'TOUS', icon: 'layout-list', linkId: -1, activeState: true }
       ];
-      // Add fetched locations to SidebarItems
-      locations.forEach(location => {
-        this.SidebarItems.push({ name: location.name, icon: 'Diamond', linkId: location.id, activeState: false });
-      });
+      // Find the location you want to insert second (e.g., SPARE)
+      const spareLocation = locations.find(loc => loc.name.toLowerCase() === 'spare');
+      if (spareLocation) {
+        this.SidebarItems.push({ name: spareLocation.name, icon: 'layout-list', linkId: spareLocation.id, activeState: false });
+      }
+
+      // Add the rest, excluding the one already added
+      locations
+        .filter(loc => loc.name.toLowerCase() !== 'spare')
+        .forEach(location => {
+          this.SidebarItems.push({ name: location.name, icon: 'Diamond', linkId: location.id, activeState: false });
+        });
     });
     console.log("Sidebar items are:", this.SidebarItems);
 
