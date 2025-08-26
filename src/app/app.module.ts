@@ -11,10 +11,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 //ICON IMPORTS-------------------------------------
 import {
-  LucideAngularModule, LayoutDashboard, LayoutList, MapPin,
-  MapPinCheck, UserRoundPlus, LogOut, Search, Bell, Pencil, Trash2, Diamond, Users, UsersRound, Timer, History,
-  User, StickyNote, Barcode, Banknote, ReceiptText,
-  Plus, X, Check
+  LucideAngularModule, LayoutDashboard, Trash2, User, Users, MapPin, Banknote, ReceiptText, StickyNote, Barcode, Pencil, Diamond,
+  Plus, X, Check, LayoutList, History, LogOut, Search
+  // ,MapPinCheck, UserRoundPlus,  Bell, UsersRound, Timer,
 
 } from 'lucide-angular';
 //-------------------------------------------------
@@ -63,9 +62,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     FormsModule,
     ReactiveFormsModule,
     LucideAngularModule.pick({ // Lucide icons
-      LayoutDashboard, LayoutList, MapPinCheck, MapPin,
-      UserRoundPlus, LogOut, Search, Bell, Pencil, Trash2, Diamond, UsersRound, Timer, History,
+      LayoutDashboard, LayoutList, MapPin,
+      LogOut, Search, Pencil, Trash2, Diamond, History,
       Users, User, StickyNote, Barcode, Banknote, ReceiptText, Plus, X, Check
+      // ,MapPinCheck,UserRoundPlus,Bell,UsersRound,Timer,
     }),
     BrowserAnimationsModule, // Angular Material animations
     MatDialogModule, // Angular Material Dialog box
