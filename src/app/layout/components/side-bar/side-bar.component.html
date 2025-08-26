@@ -17,13 +17,13 @@
         <ng-container *ngFor="let item of SidebarItems">
 
             <!-- Normal Mode or Special Items -->
-            <ng-container *ngIf="!editMode || item.linkId === -1">
+            <ng-container *ngIf="!editMode || item.linkId === -1 || item.name.toLowerCase() === 'spare'">
                 <app-side-button [iconName]="item.icon" [content]="item.name" [activeState]="item.activeState"
                     (buttonClicked)="onSideButtonClick(item)" />
             </ng-container>
 
             <!-- Edit Mode Items -->
-            <ng-container *ngIf="editMode && item.linkId !== -1">
+            <ng-container *ngIf="editMode && item.linkId !== -1 && item.name.toLowerCase() !== 'spare'">
                 <div class="flex items-center gap-2">
                     <input type="text" [(ngModel)]="editLocationNames[item.linkId]"
                         (keydown)="onEditLocationInputKeydown($event)"

@@ -158,7 +158,7 @@ export class SideBarComponent {
       if (input) (input as HTMLInputElement).focus();
     }, 0);
     this.SidebarItems.forEach(item => {
-      if (item.linkId !== -1) {
+      if (item.linkId !== -1 && item.name.toLowerCase() !== 'spare') {
         this.editLocationNames[item.linkId] = item.name;
       }
     });
