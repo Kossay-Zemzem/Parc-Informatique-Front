@@ -66,7 +66,7 @@ export class SideBarComponent {
       // Find the location you want to insert second (e.g., SPARE)
       const spareLocation = locations.find(loc => loc.name.toLowerCase() === 'spare');
       if (spareLocation) {
-        this.SidebarItems.push({ name: spareLocation.name, icon: 'layout-list', linkId: spareLocation.id, activeState: false });
+        this.SidebarItems.push({ name: spareLocation.name, icon: 'archive', linkId: spareLocation.id, activeState: false });
       }
 
       // Add the rest, excluding the one already added

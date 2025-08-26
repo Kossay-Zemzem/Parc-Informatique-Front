@@ -12,7 +12,8 @@ import { AppComponent } from './app.component';
 //ICON IMPORTS-------------------------------------
 import {
   LucideAngularModule, LayoutDashboard, Trash2, User, Users, MapPin, Banknote, ReceiptText, StickyNote, Barcode, Pencil, Diamond,
-  Plus, X, Check, LayoutList, History, LogOut, Search
+  Plus, X, Check, LayoutList, History, LogOut, Search,
+  Archive
   // ,MapPinCheck, UserRoundPlus,  Bell, UsersRound, Timer,
 
 } from 'lucide-angular';
@@ -64,7 +65,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     LucideAngularModule.pick({ // Lucide icons
       LayoutDashboard, LayoutList, MapPin,
       LogOut, Search, Pencil, Trash2, Diamond, History,
-      Users, User, StickyNote, Barcode, Banknote, ReceiptText, Plus, X, Check
+      Users, User, StickyNote, Barcode, Banknote, ReceiptText, Plus, X, Check, Archive
       // ,MapPinCheck,UserRoundPlus,Bell,UsersRound,Timer,
     }),
     BrowserAnimationsModule, // Angular Material animations
