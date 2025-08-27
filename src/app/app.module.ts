@@ -14,7 +14,8 @@ import {
   LucideAngularModule, LayoutDashboard, Trash2, User, Users, MapPin, Banknote, ReceiptText, StickyNote, Barcode, Pencil, Diamond,
   Plus, X, Check, LayoutList, History, LogOut, Search,
   Archive,
-  Info
+  Info,
+  RotateCcw
   // ,MapPinCheck, UserRoundPlus,  Bell, UsersRound, Timer,
 
 } from 'lucide-angular';
@@ -39,6 +40,8 @@ import { HistoryDialogComponent } from './layout/components/history-dialog/histo
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ArchiveMachinePageComponent } from './layout/archive-machine-page/archive-machine-page.component';
+import { ArchiveMachineCardComponent } from './layout/archive-machine-page/archive-machine-card/archive-machine-card.component';
 
 
 
@@ -55,7 +58,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MachineListComponent,
     MachineCardComponent,
     HistoryDialogComponent,
-    MachineSetupPageComponent
+    MachineSetupPageComponent,
+    ArchiveMachinePageComponent,
+    ArchiveMachineCardComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +72,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
       LayoutDashboard, LayoutList, MapPin,
       LogOut, Search, Pencil, Trash2, Diamond, History,
       Users, User, StickyNote, Barcode, Banknote, ReceiptText, Plus, X, Check, Archive, Info
+      , RotateCcw
       // ,MapPinCheck,UserRoundPlus,Bell,UsersRound,Timer,
     }),
     BrowserAnimationsModule, // Angular Material animations

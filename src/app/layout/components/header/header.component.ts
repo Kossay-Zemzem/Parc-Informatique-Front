@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LocationService } from 'src/app/services/location.service';
+import { MachineService } from 'src/app/services/machine.service';
 
 @Component({
   selector: 'app-header',
@@ -18,7 +19,9 @@ export class HeaderComponent {
   private routerSub!: Subscription;
 
 
-  constructor(private locationService: LocationService, private router: Router) { }
+  constructor(private locationService: LocationService,
+    private machineService: MachineService,
+    private router: Router) { }
 
   ngOnInit() {
     this.locationService.selectedLocation$.subscribe(location => {
@@ -47,6 +50,11 @@ export class HeaderComponent {
   private updateSubTitle(url: string) {
     this.isSubTitle = url === '/machine/new' || url.startsWith('/machine/edit/');
     this.isEditMode = url.startsWith('/machine/edit/');
+  }
+
+  onRecoverMachineClick() {
+    //Move to archive page
+    this.router.navigate(['/home/archive']);
   }
 
 }

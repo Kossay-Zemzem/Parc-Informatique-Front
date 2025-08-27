@@ -41,6 +41,11 @@ export class MachineService {
     return this.http.patch<Machine>(`${this.BaseURL}/machine/${id}`, machine);
   }
 
+  //Recover and restore functions
+  getArchivedMachines(): Observable<Machine[]> {
+    return this.http.get<Machine[]>(`${this.BaseURL}/archivedMachines`);
+  }
+
   /*     return [
         {
           id: 1,

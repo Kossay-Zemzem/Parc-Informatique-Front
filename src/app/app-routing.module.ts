@@ -4,6 +4,7 @@ import { PageNotFoundComponent } from './layout/page-not-found/page-not-found.co
 import { HomePageComponent } from './layout/home-page/home-page.component';
 import { AuthPageComponent } from './layout/auth-page/auth-page.component';
 import { MachineSetupPageComponent } from './layout/machine-setup-page/machine-setup-page.component';
+import { ArchiveMachinePageComponent } from './layout/archive-machine-page/archive-machine-page.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -17,6 +18,7 @@ const routes: Routes = [
     path: 'machine/edit/:id',     // for editing a machine
     component: MachineSetupPageComponent
   },
+  { path: 'home/archive', component: ArchiveMachinePageComponent }, //archive page
   { path: "**", component: PageNotFoundComponent },
 ];
 
@@ -27,4 +29,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 //exporting the list of pages instead of each page separately
-export const listPages = [PageNotFoundComponent, AuthPageComponent, HomePageComponent, MachineSetupPageComponent];
+export const listPages = [PageNotFoundComponent, AuthPageComponent, HomePageComponent, MachineSetupPageComponent, ArchiveMachinePageComponent];
