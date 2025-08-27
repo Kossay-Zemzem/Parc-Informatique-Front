@@ -14,7 +14,7 @@ export class HistoryDialogComponent {
   newDescription: string = '';
   constructor(
     public dialogRef: MatDialogRef<HistoryDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { machineId: number },
+    @Inject(MAT_DIALOG_DATA) public data: { machineId: number, viewOnly: boolean },
     private historyService: HistoryService
   ) { }
 
@@ -23,14 +23,20 @@ export class HistoryDialogComponent {
   }
 
   loadHistory() {
-    this.historyService.getHistoryLogs(this.data.machineId).subscribe(res => {
-      this.history = res.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());;
-    });
+    if (this.data.viewOnly) {
+      this.historyService.getHistoryLogs(this.data.machineId).subscribe(res => {
+        this.history = res.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      });
+    } else {
+      this.historyService.getHistoryLogs(this.data.machineId).subscribe(res => {
+        this.history = res.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());;
+      });
+    }
     console.log("history:", this.history);
   }
 
   addEntry() {
-    if (!this.newDate || !this.newDescription) return;
+    if (!this.newDate || !this.newDescription || this.data.viewOnly) return;
 
     const entry: HistoriqueCreateDTO = { date: this.newDate, description: this.newDescription };
     this.historyService.addHistoryLog(this.data.machineId, entry).subscribe((createdEntry: Historique) => {
@@ -45,6 +51,8 @@ export class HistoryDialogComponent {
 
 
   deleteEntry(entryId: number) {
+    if (this.data.viewOnly) return;
+
     this.historyService.deleteHistoryLog(this.data.machineId, entryId).subscribe(() => {
       this.loadHistory();
     });

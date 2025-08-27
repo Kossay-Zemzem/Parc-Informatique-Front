@@ -61,7 +61,7 @@ export class ArchiveMachineCardComponent {
 
   openDialogue(id: number): void {
     const dialogRef = this.dialog.open(HistoryDialogComponent, {
-      data: { machineId: id },
+      data: { machineId: id, viewOnly: true },
       panelClass: 'rounded-2xl',
       width: '60vw', // Keep responsive width
       maxWidth: '90vw', // Allow up to 90% of viewport width for larger screens
