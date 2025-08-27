@@ -59,4 +59,16 @@ export class LocationService {
       })
     );
   }
+
+  deleteLocation(id: number) {
+    return this.http.delete(`${this.BaseURL}/locations/${id}`).pipe(
+      tap({
+        next: () => {
+          const current = this.locationsSubject.value;
+          const updated = current.filter(loc => loc.id !== id);
+          this.locationsSubject.next(updated);
+        }
+      })
+    );
+  }
 }

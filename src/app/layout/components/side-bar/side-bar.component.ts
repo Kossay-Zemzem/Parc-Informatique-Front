@@ -47,6 +47,10 @@ export class SideBarComponent {
 
   isSideBarActive: boolean = true;
 
+  deleteMode = false;
+  showDeleteModal = false;
+  locationToDelete: any = null;
+
   private subscription: Subscription = new Subscription();
   private routerSub!: Subscription;
 
@@ -187,9 +191,35 @@ export class SideBarComponent {
     }
   }
   //Delete location --------------------------------------
-  onDeleteLocationClick(locationId: number) {
-    if (!this.isSideBarActive) return; // Prevent action if in edit mode or buttons are disabled
-    //TODO delete logic
+  onDeleteModeClick() {
+    if (!this.isSideBarActive) return;
+    this.deleteMode = true;
+  }
+
+  onDeleteCancelClick() {
+    this.deleteMode = false;
+    this.locationToDelete = null;
+    this.showDeleteModal = false;
+  }
+
+  onDeleteIconClick(item: any) {
+    this.locationToDelete = item;
+    this.showDeleteModal = true;
+  }
+
+  confirmDeleteLocation() {
+    if (this.locationToDelete) {
+      this.locationServ.deleteLocation(this.locationToDelete.linkId).subscribe(() => {
+        this.showDeleteModal = false;
+        this.deleteMode = false;
+        this.locationToDelete = null;
+      });
+    }
+  }
+
+  closeDeleteModal() {
+    this.showDeleteModal = false;
+    this.locationToDelete = null;
   }
 
   // unsubscribe from all subscriptions
