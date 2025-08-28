@@ -16,6 +16,9 @@ export class HistoryService {
   getHistoryLogs(machineId: number): Observable<Historique[]> {
     return this.http.get<Historique[]>(this.BaseURL + "/machine/" + machineId + "/history");
   }
+  getArchivedHistoryLogs(machineId: number): Observable<Historique[]> {
+    return this.http.get<Historique[]>(this.BaseURL + "/archivedMachine/" + machineId + "/history");
+  }
 
   // Add a new history log
   addHistoryLog(machineId: number, log: HistoriqueCreateDTO): Observable<Historique> {

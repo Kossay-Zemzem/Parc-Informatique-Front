@@ -24,7 +24,7 @@ export class HistoryDialogComponent {
 
   loadHistory() {
     if (this.data.viewOnly) {
-      this.historyService.getHistoryLogs(this.data.machineId).subscribe(res => {
+      this.historyService.getArchivedHistoryLogs(this.data.machineId).subscribe(res => {
         this.history = res.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
       });
     } else {
