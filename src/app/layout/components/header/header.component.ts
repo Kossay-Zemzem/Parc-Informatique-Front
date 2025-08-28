@@ -47,9 +47,35 @@ export class HeaderComponent {
     if (this.routerSub) this.routerSub.unsubscribe();
   }
 
+  /*   private updateSubTitle(url: string) {
+      if (url === '/home/archive') {
+        this.title = 'Archive';
+        this.isSubTitle = false;
+        this.isEditMode = false;
+      } else {
+        this.isSubTitle = url === '/machine/new' || url.startsWith('/machine/edit/');
+        this.isEditMode = url.startsWith('/machine/edit/');
+      }
+    } */
   private updateSubTitle(url: string) {
-    this.isSubTitle = url === '/machine/new' || url.startsWith('/machine/edit/');
-    this.isEditMode = url.startsWith('/machine/edit/');
+    if (url === '/home/archive') {
+      this.title = 'Archive';
+      this.isSubTitle = false;
+      this.isEditMode = false;
+    } else if (url === '/home' || url === '/home/') {
+      // Reset to location-based title when returning to home
+      const currentLocation = this.locationService.getCurrentLocation();
+      if (currentLocation.name === 'TOUS' || currentLocation.id === -1) {
+        this.title = 'Parc entiére';
+      } else {
+        this.title = currentLocation.name;
+      }
+      this.isSubTitle = false;
+      this.isEditMode = false;
+    } else {
+      this.isSubTitle = url === '/machine/new' || url.startsWith('/machine/edit/');
+      this.isEditMode = url.startsWith('/machine/edit/');
+    }
   }
 
   onRecoverMachineClick() {

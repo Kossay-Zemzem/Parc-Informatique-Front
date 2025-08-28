@@ -24,6 +24,10 @@ export class LocationService {
     this.selectedLocationSubject.next(location); // Update the selected location which will trigger the subscribers
   }
 
+  getCurrentLocation(): Location {
+    return this.selectedLocationSubject.value;
+  }
+
   getLocations(): Observable<Location[]> {
     return this.http.get<Location[]>(`${this.BaseURL}/locations`);
   }

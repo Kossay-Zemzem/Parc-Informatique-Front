@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Input, SimpleChanges } from '@angular/core';
 import { Machine } from 'src/app/models/Machine';
 import { MatDialog } from '@angular/material/dialog';
 import { HistoryDialogComponent } from '../../components/history-dialog/history-dialog.component';
 import { Router } from '@angular/router';
+import { MachineService } from 'src/app/services/machine.service';
 
 @Component({
   selector: 'app-archive-machine-card',
@@ -36,8 +37,11 @@ export class ArchiveMachineCardComponent {
   isEditing: boolean = false;
   showCommentModal: boolean = false;
   selectedCommentaire: string = '';
+
+  @Output() machineRestored: EventEmitter<number> = new EventEmitter<number>();
   constructor(private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private machineService: MachineService
   ) {
   }
   ngOnInit(): void {
@@ -50,7 +54,15 @@ export class ArchiveMachineCardComponent {
   }
 
   restoreMachine(machineId: number): void {
-    // Logic to restore the machine
+    if (machineId != 0) {
+      this.machineService.restoreMachine(machineId.toString()).subscribe((machine) => {
+        if (machine) {
+          this.machineRestored.emit(machineId);
+        } else {
+          console.error("Failed to restore machine");
+        }
+      });
+    }
   }
 
   editMachine(machine: Machine): void {

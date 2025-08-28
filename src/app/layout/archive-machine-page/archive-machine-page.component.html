@@ -11,7 +11,8 @@
                 sm:max-h-[calc(100vh-140px)]
                 md:max-h-[calc(100vh-160px)]
                 lg:max-h-[calc(100vh-180px)]">
-        <app-archive-machine-card *ngFor="let machine of data" [machine]="machine" />
+        <app-archive-machine-card *ngFor="let machine of data" [machine]="machine"
+            (machineRestored)="UpdateMachineList($event)" />
         <!-- <app-archive-machine-card /> -->
     </div>
 </div>

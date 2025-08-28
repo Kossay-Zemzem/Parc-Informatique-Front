@@ -44,6 +44,9 @@ export class ArchiveMachinePageComponent {
       this.data = dataServ;
     });
   }
+  UpdateMachineList(machineId: number): void {
+    this.data = this.data.filter(machine => machine.id !== machineId);
+  }
 
   ngOnDestroy(): void { //a methode that unsubscribes from the subscription when the component is destroyed to avoid memory leaks
     this.subscription.unsubscribe();

@@ -41,9 +41,18 @@ export class MachineService {
     return this.http.patch<Machine>(`${this.BaseURL}/machine/${id}`, machine);
   }
 
+  //Delete a machine
+  deleteMachine(id: string): Observable<boolean> {
+    return this.http.delete<boolean>(`${this.BaseURL}/machine/${id}`);
+  }
+
   //Recover and restore functions
   getArchivedMachines(): Observable<Machine[]> {
     return this.http.get<Machine[]>(`${this.BaseURL}/archivedMachines`);
+  }
+
+  restoreMachine(id: string): Observable<Machine> {
+    return this.http.post<Machine>(`${this.BaseURL}/archivedMachine/${id}/restore`, {});
   }
 
   /*     return [
