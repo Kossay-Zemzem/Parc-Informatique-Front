@@ -26,12 +26,12 @@
             <lucide-icon name="file-down" [size]="22" class="text-[#006308]" />
         </button>
         -->
-        <button *ngIf="!showCleanArchiveButton" (click)="openExportWizard()"
+        <button *ngIf="!showCleanArchiveButton && !isSubTitle" (click)="openExportWizard()"
             class="px-4 py-2 rounded-lg font-medium text-[#006308] border border-[#006308] bg-white hover:bg-[#006308] hover:text-white transition flex flex-row items-center gap-2">
             <lucide-icon name="file-down" [size]="20" />
             Exporter
         </button>
-        <button *ngIf="!showCleanArchiveButton"
+        <button *ngIf="!showCleanArchiveButton && !isSubTitle"
             class="px-4 py-2 rounded-lg font-medium text-[#A9743A] border border-[#A9743A] bg-white hover:bg-[#A9743A] hover:text-white transition flex flex-row items-center gap-2"
             (click)="onRecoverMachineClick()">
             <lucide-icon name="ArchiveIcon" [size]="20" />

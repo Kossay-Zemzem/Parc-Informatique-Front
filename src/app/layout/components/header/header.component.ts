@@ -125,7 +125,7 @@ export class HeaderComponent {
   openExportWizard() {
     this.dialog.open(ExportWizardDialogComponent, {
       width: '400px',
-      disableClose: true,
+      disableClose: false,
       panelClass: 'rounded-2xl',
     });
   }
