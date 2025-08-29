@@ -17,7 +17,8 @@
         <ng-container *ngFor="let item of SidebarItems">
             <!-- Normal Mode or Special Items -->
             <ng-container *ngIf="!editMode && !deleteMode || item.linkId === -1 || item.name.toLowerCase() === 'spare'">
-                <app-side-button [iconName]="item.icon" [content]="item.name" [activeState]="item.activeState"
+                <app-side-button [iconName]="item.icon" [content]="item.name"
+                    [activeState]="isSideBarActive ? item.activeState : false" [isSideBarActive]="isSideBarActive"
                     (buttonClicked)="onSideButtonClick(item)" />
             </ng-container>
             <!-- Edit Mode Items -->

@@ -10,6 +10,7 @@ export class SideButtonComponent {
   @Input() iconName = "";
 
   @Input() activeState: boolean = false;
+  @Input() isSideBarActive: boolean = true;
   @Output() buttonClicked = new EventEmitter();
   //styling variables
   textColorTcss: string = "text-gray-300";
@@ -33,27 +34,25 @@ export class SideButtonComponent {
     this.updateActiveStyle();
   }
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['activeState']) {
+    if (changes['activeState'] || changes['isSideBarActive']) {
       this.updateActiveStyle();
     }
   }
 
   onButtonClick(): void {
-    this.buttonClicked.emit();
+    if (this.isSideBarActive) {
+      this.buttonClicked.emit();
+    }
   }
 
   updateActiveStyle(): void {
-    /*     if (this.content === "Log out") {
-          this.textColorTcss = "text-red-500";
-          this.buttonBgTcss = "bg-transparent";
-          this.buttonHoverBgTcss = "hover:bg-[#f5ddd8]";
-          this.textHoverColorTcss = "group-hover:text-red-600";
-        } else {
-          this.textColorTcss = "text-gray-300";
-          this.buttonBgTcss = "bg-transparent";
-          this.buttonHoverBgTcss = "hover:bg-yellow-400 hover:bg-opacity-20";
-          this.textHoverColorTcss = "group-hover:text-yellow-400";
-        } */
+    if (!this.isSideBarActive) {
+      this.buttonBgTcss = "bg-transparent";
+      this.buttonHoverBgTcss = "";
+      this.textColorTcss = "text-gray-400";
+      this.textHoverColorTcss = "";
+      return;
+    }
     if (this.activeState) {
       this.buttonBgTcss = "bg-yellow-400 bg-opacity-30";
       this.textColorTcss = "text-yellow-500";

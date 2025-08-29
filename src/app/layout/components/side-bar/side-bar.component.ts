@@ -95,9 +95,7 @@ export class SideBarComponent {
 
   //Track sidebar state 
   private updateSideBarState(url: string) {
-    this.isSideBarActive = !(
-      url.startsWith('/machine/new') || url.startsWith('/machine/edit/')
-    );
+    this.isSideBarActive = url === '/home';
   }
 
   onLogoClick() {
