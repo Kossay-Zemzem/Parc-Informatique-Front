@@ -96,8 +96,9 @@
         </div>
     </div>
     <div class="w-0.5 my-2 bg-[#B7CBDB] rounded-full flex-shrink-0"></div>
-    <div class="flex flex-col w-20 my-8 min-w-0">
-        <div class="flex flex-col gap-1 h-1/2 items-center">
+
+    <div class="flex flex-col w-20 pt-4 min-w-0 justify-between items-center h-full">
+        <div class="flex flex-col items-center mt-2 gap-1">
             <button (click)="editMachine(machine)"
                 class="hover:bg-[#b5dfff] hover:opacity-100 rounded-full p-2 transition">
                 <lucide-icon name="pencil" [size]="22" class="text-[#003863]" />
@@ -107,9 +108,10 @@
                 <lucide-icon name="trash-2" [size]="22" class="text-[#c71509]" />
             </button>
         </div>
-        <div class=" flex flex-col h-1/2 items-center justify-end">
-            <button class="hover:bg-orange-200 hover:opacity-80 rounded-full p-2 transition">
-                <lucide-icon name="history" [size]="22" class="text-orange-500" (click)="openDialogue(machine.id)" />
+        <div class="flex flex-col items-center mt-8">
+            <button class="hover:bg-orange-200 hover:opacity-80 rounded-full p-2 transition"
+                (click)="openDialogue(machine.id)">
+                <lucide-icon name="history" [size]="22" class="text-orange-500" />
             </button>
         </div>
     </div>
