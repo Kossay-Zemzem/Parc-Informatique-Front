@@ -14,6 +14,9 @@ export class HeaderComponent {
   @Input() title: string = 'TITLE';
   isEditMode: boolean = false;
   isSubTitle: boolean = false;
+  showReturnButton: boolean = false;
+  showCleanArchiveButton: boolean = false;
+  showCleanArchiveModal: boolean = false;
 
   // private locationSub!: Subscription;
   private routerSub!: Subscription;
@@ -62,6 +65,8 @@ export class HeaderComponent {
       this.title = 'Archive';
       this.isSubTitle = false;
       this.isEditMode = false;
+      this.showReturnButton = true;
+      this.showCleanArchiveButton = true;
     } else if (url === '/home' || url === '/home/') {
       // Reset to location-based title when returning to home
       const currentLocation = this.locationService.getCurrentLocation();
@@ -72,15 +77,46 @@ export class HeaderComponent {
       }
       this.isSubTitle = false;
       this.isEditMode = false;
+      this.showReturnButton = false;
+      this.showCleanArchiveButton = false;
     } else {
       this.isSubTitle = url === '/machine/new' || url.startsWith('/machine/edit/');
       this.isEditMode = url.startsWith('/machine/edit/');
+      this.showReturnButton = true;
+      this.showCleanArchiveButton = false;
     }
   }
 
   onRecoverMachineClick() {
     //Move to archive page
     this.router.navigate(['/home/archive']);
+  }
+
+
+
+  onReturnClick() {
+    // Handle return click
+    this.router.navigate(['/home']);
+  }
+
+  openCleanArchiveModal() {
+    this.showCleanArchiveModal = true;
+  }
+
+  closeCleanArchiveModal() {
+    this.showCleanArchiveModal = false;
+  }
+
+  confirmCleanArchive() {
+    this.closeCleanArchiveModal();
+    this.machineService.clearArchive().subscribe((result: boolean) => {
+      if (result) {
+        // Handle successful archive clearance
+      } else {
+        // Handle archive clearance failure
+      }
+    });
+
   }
 
 }

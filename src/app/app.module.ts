@@ -15,7 +15,13 @@ import {
   Plus, X, Check, LayoutList, History, LogOut, Search,
   Archive,
   Info,
-  RotateCcw
+  RotateCcw,
+  ArrowLeft,
+  Package,
+  Package2,
+  ArchiveIcon,
+  ArchiveXIcon,
+  CircleAlert
   // ,MapPinCheck, UserRoundPlus,  Bell, UsersRound, Timer,
 
 } from 'lucide-angular';
@@ -71,8 +77,8 @@ import { ArchiveMachineCardComponent } from './layout/archive-machine-page/archi
     LucideAngularModule.pick({ // Lucide icons
       LayoutDashboard, LayoutList, MapPin,
       LogOut, Search, Pencil, Trash2, Diamond, History,
-      Users, User, StickyNote, Barcode, Banknote, ReceiptText, Plus, X, Check, Archive, Info
-      , RotateCcw
+      Users, User, StickyNote, Barcode, Banknote, ReceiptText, Plus, X, Check, Archive, Info, CircleAlert
+      , RotateCcw, ArrowLeft, ArchiveIcon
       // ,MapPinCheck,UserRoundPlus,Bell,UsersRound,Timer,
     }),
     BrowserAnimationsModule, // Angular Material animations

@@ -43,6 +43,13 @@ export class ArchiveMachinePageComponent {
     this.subscription = this.MachineServ.getArchivedMachines().subscribe(dataServ => {
       this.data = dataServ;
     });
+
+    // Subscribe to archive cleared event
+    this.MachineServ.archiveCleared$.subscribe(() => {
+      this.MachineServ.getArchivedMachines().subscribe(dataServ => {
+        this.data = dataServ;
+      });
+    });
   }
   UpdateMachineList(machineId: number): void {
     this.data = this.data.filter(machine => machine.id !== machineId);

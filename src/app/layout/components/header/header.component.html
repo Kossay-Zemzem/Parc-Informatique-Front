@@ -1,5 +1,10 @@
 <div class=" flex flex-row justify-between pr-8 pl-4 py-6 w-full">
-    <div class="flex items-center">
+    <div class="flex items-center gap-4">
+        <button *ngIf="showReturnButton"
+            class="flex flex-row items-center justify-center w-12 h-12 rounded-full bg-white hover:bg-gray-200 transition"
+            (click)="onReturnClick()">
+            <lucide-icon name="arrow-left" [size]="32" />
+        </button>
         <div class="font-poppins font-medium text-4xl">
             <!-- Parc entiére -->
             {{ title }}
@@ -13,10 +18,49 @@
         </div>
     </div>
     <!--Recover machine icon-->
-    <div class="relative group">
-        <button class="p-2 rounded-full hover:bg-gray-200" (click)="onRecoverMachineClick()">
-            <lucide-icon name="rotate-ccw" [size]="24" color="#002752"></lucide-icon>
+    <div class="flex flex-row gap-2 items-center">
+        <button *ngIf="!showCleanArchiveButton"
+            class="px-4 py-2 rounded-lg font-medium text-[#A9743A] border border-[#A9743A] bg-white hover:bg-[#A9743A] hover:text-white transition flex flex-row items-center gap-2"
+            (click)="onRecoverMachineClick()">
+            <lucide-icon name="ArchiveIcon" [size]="20" />
+            Archive
+        </button>
+        <button *ngIf="showCleanArchiveButton"
+            class="px-4 py-2 rounded-lg font-medium text-red-600 border border-red-600 bg-white hover:bg-red-600 hover:text-white transition flex flex-row items-center gap-2"
+            (click)="openCleanArchiveModal()">
+            <lucide-icon name="trash-2" [size]="20" />
+            Vider l'archive
         </button>
     </div>
     <!-- <app-profile-card></app-profile-card> -->
+</div>
+
+<!-- Clean Archive Confirmation Modal -->
+<div *ngIf="showCleanArchiveModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+    <div class="bg-white rounded-lg shadow-lg p-6 max-w-lg w-full">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-bold text-[#c71509]">
+                Vider l'archive ?
+            </h2>
+            <button
+                class="text-gray-400 hover:bg-red-100 hover:text-red-600 transition-colors rounded-full p-1 focus:outline-none focus:ring-2 focus:ring-red-600"
+                (click)="closeCleanArchiveModal()" aria-label="Fermer">
+                <lucide-icon name="x" [size]="25" />
+            </button>
+        </div>
+        <div class="font-medium text-gray-800 mb-4">Voulez-vous vraiment vider l'archive ?</div>
+        <div class="flex items-center text-sm text-[#b45309] bg-yellow-50 rounded px-2 py-1 mb-4">
+            <lucide-icon name="circle-alert" [size]="25" class="mr-2" />
+            <span>Toutes les machines archivées seront définitivement supprimées.</span>
+        </div>
+        <div class="flex justify-end gap-2">
+            <button class="px-3 py-1.5 rounded-lg bg-gray-200 hover:bg-gray-300" (click)="closeCleanArchiveModal()">
+                Annuler
+            </button>
+            <button class="px-3 py-1.5 rounded-lg bg-[#c71509] text-white hover:bg-[#a31207]"
+                (click)="confirmCleanArchive()">
+                Vider
+            </button>
+        </div>
+    </div>
 </div>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Machine } from '../models/Machine';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, Subject, tap, pipe } from 'rxjs';
 import { Location } from '../models/Location';
 import { MachineByIdDTO } from '../models/MachineByIdDTO';
 
@@ -53,6 +53,18 @@ export class MachineService {
 
   restoreMachine(id: string): Observable<Machine> {
     return this.http.post<Machine>(`${this.BaseURL}/archivedMachine/${id}/restore`, {});
+  }
+
+  archiveCleared$ = new Subject<void>();
+
+  clearArchive(): Observable<boolean> {
+    return this.http.delete<boolean>(`${this.BaseURL}/archivedMachines/cleanAll`).pipe(
+      tap(result => {
+        if (result) {
+          this.archiveCleared$.next(); // Notify listeners
+        }
+      })
+    );
   }
 
   /*     return [

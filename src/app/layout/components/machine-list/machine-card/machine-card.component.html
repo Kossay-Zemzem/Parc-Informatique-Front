@@ -8,6 +8,7 @@
         <!--       <div class="flex flex-col col-span-2 w-full border-0 border-red-400">
             <img class="w-20" src="../../../../../assets/images/desktop_low.png">
         </div> -->
+        <!--------------------------------------------------------------------------------------------->
         <div class="flex flex-col col-span-2 w-full border-0 border-red-400">
             <ng-container [ngSwitch]="machine.type.toLowerCase()">
                 <img *ngSwitchCase="'desktop'" class="w-20" src="../../../../../assets/images/desktop_low.png"
@@ -28,6 +29,8 @@
             <div class="text-3xl font-semibold min-w-0 truncate">{{machine.modele}}</div>
             <div class="font-bold min-w-0 truncate">{{machine.serviceTag}}</div>
         </div>
+
+        <!--------------------------------------------------------------------------------------------->
         <!--         <div class="flex flex-col col-span-2 h-full border-0 border-red-400 items-end text-right font-bold">
             {{machine.reseau}}
         </div> -->

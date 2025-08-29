@@ -1,5 +1,12 @@
 <div class="flex flex-col flex-1 min-h-0 ">
     <div class="border-b-2 mx-8"></div>
+    <div class="flex items-center text-sm text-[#024a97] bg-blue-50 rounded px-4 py-3 mx-8">
+        <lucide-icon name="info" [size]="25" class="mr-2" />
+        <span>
+            Ceci est la liste des machines supprimées récemment (30 derniers jours). Restaurer une machine la placera
+            automatiquement dans <span class="font-bold">SPARE</span>.
+        </span>
+    </div>
     <!--Using a scroll bar alternative-->
     <div class="flex flex-col gap-4 mt-4 px-4 overflow-y-auto overflow-x-hidden
             [&::-webkit-scrollbar]:w-2
