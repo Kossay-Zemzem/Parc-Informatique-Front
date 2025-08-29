@@ -21,7 +21,8 @@ import {
   Package2,
   ArchiveIcon,
   ArchiveXIcon,
-  CircleAlert
+  CircleAlert,
+  FileDown
   // ,MapPinCheck, UserRoundPlus,  Bell, UsersRound, Timer,
 
 } from 'lucide-angular';
@@ -48,6 +49,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ArchiveMachinePageComponent } from './layout/archive-machine-page/archive-machine-page.component';
 import { ArchiveMachineCardComponent } from './layout/archive-machine-page/archive-machine-card/archive-machine-card.component';
+import { ExportWizardDialogComponent } from './layout/components/export-wizard-dialog/export-wizard-dialog.component';
 
 
 
@@ -66,7 +68,8 @@ import { ArchiveMachineCardComponent } from './layout/archive-machine-page/archi
     HistoryDialogComponent,
     MachineSetupPageComponent,
     ArchiveMachinePageComponent,
-    ArchiveMachineCardComponent
+    ArchiveMachineCardComponent,
+    ExportWizardDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +81,7 @@ import { ArchiveMachineCardComponent } from './layout/archive-machine-page/archi
       LayoutDashboard, LayoutList, MapPin,
       LogOut, Search, Pencil, Trash2, Diamond, History,
       Users, User, StickyNote, Barcode, Banknote, ReceiptText, Plus, X, Check, Archive, Info, CircleAlert
-      , RotateCcw, ArrowLeft, ArchiveIcon
+      , RotateCcw, ArrowLeft, ArchiveIcon, FileDown
       // ,MapPinCheck,UserRoundPlus,Bell,UsersRound,Timer,
     }),
     BrowserAnimationsModule, // Angular Material animations

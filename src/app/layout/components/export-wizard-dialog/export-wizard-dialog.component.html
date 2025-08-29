@@ -1,0 +1,87 @@
+<div class="flex flex-col h-full min-h-[420px] p-4 justify-between">
+    <!-- Header -->
+    <h2 class="text-xl font-bold mb-4 text-[#006308]">
+        Assistant d'Export
+    </h2>
+
+    <!-- Content -->
+    <div class="flex flex-col gap-4 overflow-y-auto flex-1">
+
+        <!-- Data type toggle -->
+        <div>
+            <label class="block font-semibold mb-1">Choisissez les données à exporter</label>
+            <div class="flex gap-2">
+                <button (click)="dataType='machine'" [class.bg-[#006308]]="dataType==='machine'"
+                    [class.text-white]="dataType==='machine'" [class.hover:bg-gray-100]="dataType!=='machine'"
+                    class="flex-1 px-3 py-2 rounded-lg border text-center">
+                    Données Machine
+                </button>
+                <button (click)="dataType='history'" [class.bg-[#006308]]="dataType==='history'"
+                    [class.text-white]="dataType==='history'" [class.hover:bg-gray-100]="dataType!=='history'"
+                    class="flex-1 px-3 py-2 rounded-lg border text-center">
+                    Historique
+                </button>
+            </div>
+        </div>
+
+        <!-- Location selector -->
+        <div *ngIf="dataType==='machine'">
+            <label class="block font-semibold mb-1">Emplacement (optionnel)</label>
+            <select [(ngModel)]="locationId" class="w-full border rounded-lg p-2">
+                <option [ngValue]="null">Tous les emplacements</option>
+                <option *ngFor="let loc of locations" [ngValue]="loc.id">
+                    {{ loc.name }}
+                </option>
+            </select>
+        </div>
+
+        <!-- Format toggle -->
+        <div>
+            <label class="block font-semibold mb-1">Choisissez le format</label>
+            <div class="flex gap-2">
+                <button (click)="format='csv'" [class.bg-[#006308]]="format==='csv'" [class.text-white]="format==='csv'"
+                    [class.hover:bg-gray-100]="format!=='csv'" class="flex-1 px-3 py-2 rounded-lg border text-center">
+                    CSV
+                </button>
+                <button (click)="format='excel'" [class.bg-[#006308]]="format==='excel'"
+                    [class.text-white]="format==='excel'" [class.hover:bg-gray-100]="format!=='excel'"
+                    class="flex-1 px-3 py-2 rounded-lg border text-center">
+                    Excel
+                </button>
+                <button (click)="format='pdf'" [class.bg-[#006308]]="format==='pdf'" [class.text-white]="format==='pdf'"
+                    [class.hover:bg-gray-100]="format!=='pdf'" class="flex-1 px-3 py-2 rounded-lg border text-center">
+                    PDF
+                </button>
+            </div>
+        </div>
+
+        <!-- Page size toggle -->
+        <div *ngIf="format==='pdf'">
+            <label class="block font-semibold mb-1">Taille de la page</label>
+            <div class="flex gap-2">
+                <button (click)="pageSize='A4'" [class.bg-[#006308]]="pageSize==='A4'"
+                    [class.text-white]="pageSize==='A4'" [class.hover:bg-gray-100]="pageSize!=='A4'"
+                    class="flex-1 px-3 py-2 rounded-lg border text-center">
+                    A4
+                </button>
+                <button (click)="pageSize='A3'" [class.bg-[#006308]]="pageSize==='A3'"
+                    [class.text-white]="pageSize==='A3'" [class.hover:bg-gray-100]="pageSize!=='A3'"
+                    class="flex-1 px-3 py-2 rounded-lg border text-center">
+                    A3
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Actions -->
+    <div class="flex justify-end gap-2 mt-6">
+        <button (click)="onCancel()" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300">
+            Annuler
+        </button>
+        <button (click)="onExport()" [disabled]="!format"
+            class="px-4 py-2 rounded-lg bg-[#006308] text-white hover:bg-[#004d06] disabled:opacity-50">
+            Exporter
+        </button>
+    </div>
+</div>

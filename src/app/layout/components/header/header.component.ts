@@ -1,8 +1,10 @@
 import { Component, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LocationService } from 'src/app/services/location.service';
 import { MachineService } from 'src/app/services/machine.service';
+import { ExportWizardDialogComponent } from '../export-wizard-dialog/export-wizard-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +26,9 @@ export class HeaderComponent {
 
   constructor(private locationService: LocationService,
     private machineService: MachineService,
-    private router: Router) { }
+    private router: Router,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     this.locationService.selectedLocation$.subscribe(location => {
@@ -116,7 +120,14 @@ export class HeaderComponent {
         // Handle archive clearance failure
       }
     });
+  }
 
+  openExportWizard() {
+    this.dialog.open(ExportWizardDialogComponent, {
+      width: '400px',
+      disableClose: true,
+      panelClass: 'rounded-2xl',
+    });
   }
 
 }
