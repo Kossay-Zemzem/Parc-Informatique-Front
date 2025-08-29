@@ -31,6 +31,7 @@ export class ArchiveMachinePageComponent {
       commentaire: "unknown"
     }
   ]
+  loading: boolean = true;
 
   private subscription: Subscription = new Subscription(); //subscription pour le comite selectionne
 
@@ -42,6 +43,7 @@ export class ArchiveMachinePageComponent {
     //Subscribe to loaction changes
     this.subscription = this.MachineServ.getArchivedMachines().subscribe(dataServ => {
       this.data = dataServ;
+      this.loading = false; // Stop loading
     });
 
     // Subscribe to archive cleared event

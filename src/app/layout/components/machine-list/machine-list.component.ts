@@ -12,28 +12,30 @@ import { LocationService } from 'src/app/services/location.service';
 export class MachineListComponent {
   /*   headerItems: Array<string> = ["Nom", "Numero", "Email", "Status", "Actions"]; */
 
-  data: Array<Machine> = [
-    {
-      id: 0,
-      type: "unknown", // Laptop, Desktop, Workstation
-      marque: "unknown",
-      modele: "unknown",
-      serviceTag: "unknown",
-      reseau: "unknown",
-      assignedUser: "unknown",
-      locationId: 0,
-      locationName: "unknown",
-      os: "unknown",
-      cpu: "unknown",
-      ram: 0,
-      typeStockage: "unknown",
-      tailleStockage: 0,
-      dateAchat: new Date(),
-      dateExpirationGarantie: new Date(),
-      vendeur: "unknown",
-      commentaire: "unknown"
-    }
-  ]
+  // data: Array<Machine> = [
+  //   {
+  //     id: 0,
+  //     type: "unknown", // Laptop, Desktop, Workstation
+  //     marque: "unknown",
+  //     modele: "unknown",
+  //     serviceTag: "unknown",
+  //     reseau: "unknown",
+  //     assignedUser: "unknown",
+  //     locationId: 0,
+  //     locationName: "unknown",
+  //     os: "unknown",
+  //     cpu: "unknown",
+  //     ram: 0,
+  //     typeStockage: "unknown",
+  //     tailleStockage: 0,
+  //     dateAchat: new Date(),
+  //     dateExpirationGarantie: new Date(),
+  //     vendeur: "unknown",
+  //     commentaire: "unknown"
+  //   }
+  // ]
+  data: Array<Machine> = [];
+  loading: boolean = true;
 
   private subscription: Subscription = new Subscription(); //subscription pour le comite selectionne
 
@@ -47,6 +49,7 @@ export class MachineListComponent {
     this.subscription = this.LocationServ.selectedLocation$.subscribe(location => {
       this.MachineServ.getMachineListByLocation(location).subscribe(dataServ => {
         this.data = dataServ; // Update the data with the machines for the selected location
+        this.loading = false; // Stop loading
         const listDiv = document.getElementById('machine-list');
         if (listDiv) listDiv.scrollTop = 0;
       });
