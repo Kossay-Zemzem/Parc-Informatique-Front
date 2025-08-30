@@ -35,6 +35,7 @@ export class MachineCardComponent {
   isEditing: boolean = false;
   showCommentModal: boolean = false;
   selectedCommentaire: string = '';
+  modalTitle: string = '';
 
   @Output() machineDeleted: EventEmitter<number> = new EventEmitter<number>();
   constructor(private dialog: MatDialog,
@@ -87,7 +88,8 @@ export class MachineCardComponent {
         }); */
   }
 
-  openCommentModal(comment: string): void {
+  openCommentModal(comment: string, title: string): void {
+    this.modalTitle = title
     this.selectedCommentaire = comment;
     this.showCommentModal = true;
   }

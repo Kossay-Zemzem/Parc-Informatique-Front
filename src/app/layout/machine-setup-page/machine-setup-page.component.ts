@@ -79,14 +79,14 @@ export class MachineSetupPageComponent {
       serviceTag: ['', Validators.required],
       reseau: [''],
       assignedUser: [''],
-      os: [''],
-      cpu: [''],
+      os: ['', [Validators.maxLength(60)]],
+      cpu: ['', [Validators.maxLength(60)]],
       ram: [8],
       typeStockage: [''],
       tailleStockage: [256],
       dateAchat: [null],
       dateExpirationGarantie: [null],
-      vendeur: [''],
+      vendeur: ['', [Validators.maxLength(30)]],
       commentaire: ['', [Validators.maxLength(500)]], // Enforce max length of 500 characters (database's max character length)
       location: [null, Validators.required]
     });

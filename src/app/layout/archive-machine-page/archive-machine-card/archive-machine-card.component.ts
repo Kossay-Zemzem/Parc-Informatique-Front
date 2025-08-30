@@ -37,6 +37,7 @@ export class ArchiveMachineCardComponent {
   isEditing: boolean = false;
   showCommentModal: boolean = false;
   selectedCommentaire: string = '';
+  modalTitle: string = '';
 
   @Output() machineRestored: EventEmitter<number> = new EventEmitter<number>();
   constructor(private dialog: MatDialog,
@@ -90,7 +91,8 @@ export class ArchiveMachineCardComponent {
         }); */
   }
 
-  openCommentModal(comment: string): void {
+  openCommentModal(comment: string, title: string): void {
+    this.modalTitle = title
     this.selectedCommentaire = comment;
     this.showCommentModal = true;
   }
