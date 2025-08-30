@@ -11,8 +11,8 @@ import { MachineByIdDTO } from '../models/MachineByIdDTO';
 export class MachineService {
 
   constructor(private http: HttpClient) { }
-  private BaseURL: string = 'http://localhost:8080';
-  // private BaseURL: string = '/api'; //relative URL for deplyement (served from backend)
+  // private BaseURL: string = 'http://localhost:8080';
+  private BaseURL: string = ''; //relative URL for deplyement (served from backend)
 
 
   getAllMachines(): Observable<Machine[]> {   //for developement only , not for production !!!

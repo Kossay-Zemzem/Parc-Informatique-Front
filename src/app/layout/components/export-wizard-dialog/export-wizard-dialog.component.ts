@@ -41,7 +41,8 @@ export class ExportWizardDialogComponent implements OnInit {
   onExport() {
 
     let url = '';
-    const baseURL = 'http://localhost:8080';
+    // const baseURL = 'http://localhost:8080';
+    const baseURL: string = ''; //relative URL for deplyement (served from backend)
 
     if (this.dataType === 'history') {
       url = `/export/history/${this.format}`;
