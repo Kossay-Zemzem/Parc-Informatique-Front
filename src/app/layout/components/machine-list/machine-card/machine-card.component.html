@@ -59,26 +59,59 @@
         </div>
         <div class="flex flex-row gap-2 items-center min-w-0">
             <!-- <lucide-icon name="Users" class="text-[#003863] w-4" /> -->
-            <div class="flex flex-row gap-1 min-w-0 truncate"><span class="font-semibold">RAM:</span>{{machine.ram}} Go
+            <div class="flex flex-row gap-1 min-w-0 truncate">
+                <span class="font-semibold">RAM:</span>
+                <ng-container *ngIf="machine.ram !== undefined && machine.ram !== null; else noRam">
+                    {{machine.ram}} Go
+                </ng-container>
+                <ng-template #noRam>
+                    <span class="text-gray-400">Non défini</span>
+                </ng-template>
             </div>
         </div>
         <div class="flex flex-row gap-2 items-center min-w-0">
             <!-- <lucide-icon name="Users" class="text-[#003863] w-4" /> -->
-            <div class="flex flex-row gap-1 min-w-0 truncate"><span
-                    class="font-semibold">Stockage:</span>{{machine.typeStockage}} - {{machine.tailleStockage}} Go</div>
+            <div class="flex flex-row gap-1 min-w-0 truncate">
+                <span class="font-semibold">Stockage:</span>
+                <ng-container *ngIf="machine.tailleStockage !== undefined && machine.tailleStockage !== null">
+                    <ng-container *ngIf="machine.typeStockage; else justStorage">
+                        {{machine.tailleStockage}} Go - {{machine.typeStockage}}
+                    </ng-container>
+                    <ng-template #justStorage>
+                        {{machine.tailleStockage}} Go
+                    </ng-template>
+                </ng-container>
+                <ng-container *ngIf="machine.tailleStockage === undefined || machine.tailleStockage === null">
+                    <span class="text-gray-400">Non défini</span>
+                </ng-container>
+            </div>
         </div>
     </div>
     <div class="w-0.5 my-2 bg-[#B7CBDB] rounded-full flex-shrink-0"></div>
     <div class="flex flex-col gap-2 w-1/3 min-w-0 pt-10 px-4 pb-4 overflow-hidden">
         <div class="flex flex-row gap-2 items-center min-w-0">
             <lucide-icon name="banknote" class="text-[#003863] w-4" />
-            <div class="flex flex-row gap-1 min-w-0 truncate"><span
-                    class="font-semibold">Achat:</span>{{machine.dateAchat | date}}</div>
+            <div class="flex flex-row gap-1 min-w-0 truncate">
+                <span class="font-semibold">Achat:</span>
+                <ng-container *ngIf="machine.dateAchat; else noDateAchat">
+                    {{machine.dateAchat | date:'dd/MM/yyyy'}}
+                </ng-container>
+                <ng-template #noDateAchat>
+                    <span class="text-gray-400">Date non renseignée</span>
+                </ng-template>
+            </div>
         </div>
         <div class="flex flex-row gap-2 items-center min-w-0">
             <lucide-icon name="receipt-text" class="text-[#003863] w-4" />
-            <div class="flex flex-row gap-1 min-w-0 truncate"><span
-                    class="font-semibold">Garantie:</span>{{machine.dateExpirationGarantie | date}}</div>
+            <div class="flex flex-row gap-1 min-w-0 truncate">
+                <span class="font-semibold">Garantie:</span>
+                <ng-container *ngIf="machine.dateExpirationGarantie; else noDateExp">
+                    {{machine.dateExpirationGarantie | date:'dd/MM/yyyy'}}
+                </ng-container>
+                <ng-template #noDateExp>
+                    <span class="text-gray-400">Date non renseignée</span>
+                </ng-template>
+            </div>
         </div>
         <div class="flex flex-row gap-2 items-center min-w-0">
             <lucide-icon name="barcode" class="text-[#003863] w-4" />

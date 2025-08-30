@@ -84,8 +84,8 @@ export class MachineSetupPageComponent {
       ram: [8],
       typeStockage: [''],
       tailleStockage: [256],
-      dateAchat: [''],
-      dateExpirationGarantie: [''],
+      dateAchat: [null],
+      dateExpirationGarantie: [null],
       vendeur: [''],
       commentaire: ['', [Validators.maxLength(500)]], // Enforce max length of 500 characters (database's max character length)
       location: [null, Validators.required]
