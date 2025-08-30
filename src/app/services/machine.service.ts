@@ -4,6 +4,7 @@ import { Machine } from '../models/Machine';
 import { Observable, BehaviorSubject, Subject, tap, pipe } from 'rxjs';
 import { Location } from '../models/Location';
 import { MachineByIdDTO } from '../models/MachineByIdDTO';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class MachineService {
 
   constructor(private http: HttpClient) { }
   // private BaseURL: string = 'http://localhost:8080';
-  private BaseURL: string = ''; //relative URL for deplyement (served from backend)
+  // private BaseURL: string = ''; //relative URL for deplyement (served from backend)
+  private BaseURL: string = environment.baseURL;
 
 
   getAllMachines(): Observable<Machine[]> {   //for developement only , not for production !!!

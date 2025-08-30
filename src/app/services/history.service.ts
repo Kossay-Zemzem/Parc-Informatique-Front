@@ -3,6 +3,7 @@ import { Historique } from '../models/Historique';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { HistoriqueCreateDTO } from '../models/HistoriqueCreateDTO';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ import { HistoriqueCreateDTO } from '../models/HistoriqueCreateDTO';
 export class HistoryService {
   constructor(private http: HttpClient) { }
   // private BaseURL: string = 'http://localhost:8080';
-  private BaseURL: string = ''; //relative URL for deplyement (served from backend)
+  // private BaseURL: string = ''; //relative URL for deplyement (served from backend)
+  private BaseURL: string = environment.baseURL;
 
   // Fetch history logs for a machine
   getHistoryLogs(machineId: number): Observable<Historique[]> {

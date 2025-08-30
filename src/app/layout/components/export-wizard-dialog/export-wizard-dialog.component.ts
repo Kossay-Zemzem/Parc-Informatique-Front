@@ -5,6 +5,7 @@ import { ExportParams } from 'src/app/models/ExportParams';
 import { Location } from 'src/app/models/Location';
 import { ExportService } from 'src/app/services/export.service';
 import { LocationService } from 'src/app/services/location.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-export-wizard-dialog',
@@ -42,7 +43,8 @@ export class ExportWizardDialogComponent implements OnInit {
 
     let url = '';
     // const baseURL = 'http://localhost:8080';
-    const baseURL: string = ''; //relative URL for deplyement (served from backend)
+    // const baseURL: string = ''; //relative URL for deplyement (served from backend)
+    const baseURL: string = environment.baseURL;
 
     if (this.dataType === 'history') {
       url = `/export/history/${this.format}`;

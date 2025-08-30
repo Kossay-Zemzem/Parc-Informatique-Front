@@ -37,7 +37,7 @@
                 h-full max-h-[calc(100vh-120px)]
                 sm:max-h-[calc(100vh-140px)]
                 md:max-h-[calc(100vh-160px)]
-                lg:max-h-[calc(100vh-180px)]" id="machine-list">
+                lg:max-h-[calc(100vh-120px)]" id="machine-list">
         <app-machine-card *ngFor="let machine of data" [machine]="machine"
             (machineDeleted)="UpdateMachineList($event)" />
     </div>

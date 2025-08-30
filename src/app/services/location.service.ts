@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Location } from '../models/Location';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocationService {
   // private BaseURL = 'http://localhost:8080';
-  private BaseURL: string = ''; //relative URL for deplyement (served from backend)
+  // private BaseURL: string = ''; //relative URL for deplyement (served from backend)
+  private BaseURL: string = environment.baseURL;
 
   // Holds the currently selected location
   private selectedLocationSubject = new BehaviorSubject<Location>({ id: -1, name: "TOUS" });
