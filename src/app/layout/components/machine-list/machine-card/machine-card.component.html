@@ -118,7 +118,8 @@
             <div class="flex flex-row gap-1 min-w-0 truncate"><span
                     class="font-semibold">Vendeur:</span>{{machine.vendeur}}</div>
         </div>
-        <div class="flex flex-row gap-2 items-center min-w-0">
+        <div *ngIf="machine.commentaire && machine.commentaire.trim().length > 0"
+            class="flex flex-row gap-2 items-center min-w-0">
             <lucide-icon name="sticky-note" class="text-[#003863] w-4 flex-shrink-0 self-start" />
             <button
                 class="flex flex-row gap-1 items-center overflow-hidden text-ellipsis cursor-pointer hover:underline rounded transition min-w-0"
