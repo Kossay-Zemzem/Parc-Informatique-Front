@@ -22,7 +22,8 @@ import {
   ArchiveIcon,
   ArchiveXIcon,
   CircleAlert,
-  FileDown
+  FileDown,
+  PackageOpen
   // ,MapPinCheck, UserRoundPlus,  Bell, UsersRound, Timer,
 
 } from 'lucide-angular';
@@ -81,7 +82,7 @@ import { ExportWizardDialogComponent } from './layout/components/export-wizard-d
       LayoutDashboard, LayoutList, MapPin,
       LogOut, Search, Pencil, Trash2, Diamond, History,
       Users, User, StickyNote, Barcode, Banknote, ReceiptText, Plus, X, Check, Archive, Info, CircleAlert
-      , RotateCcw, ArrowLeft, ArchiveIcon, FileDown
+      , RotateCcw, ArrowLeft, ArchiveIcon, FileDown, PackageOpen
       // ,MapPinCheck,UserRoundPlus,Bell,UsersRound,Timer,
     }),
     BrowserAnimationsModule, // Angular Material animations
