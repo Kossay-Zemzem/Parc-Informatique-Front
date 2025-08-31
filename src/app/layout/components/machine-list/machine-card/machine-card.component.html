@@ -1,6 +1,6 @@
 <div class="flex flex-row gap-0 bg-[#EAF5FE] rounded-lg overflow-hidden w-full max-w-full">
-    <div class="grid grid-cols-6 w-1/3 min-w-0 items-center justify-center p-4 overflow-hidden">
-        <div class="col-span-6 border-0 border-red-400">
+    <div class="flex flex-col w-1/3 min-w-0 justify-center p-4 overflow-hidden">
+        <div class="border-0 border-red-400">
             <div class="bg-[#003863] text-sm text-white w-fit px-2 py-1 rounded-lg shadow-lg font-medium">
                 {{machine.type}}
             </div>
@@ -9,36 +9,38 @@
             <img class="w-20" src="../../../../../assets/images/desktop_low.png">
         </div> -->
         <!--------------------------------------------------------------------------------------------->
-        <div class="flex flex-col col-span-2 w-full border-0 border-red-400">
-            <ng-container [ngSwitch]="machine.type.toLowerCase()">
-                <img *ngSwitchCase="'desktop'" class="w-20" src="../../../../../assets/images/desktop_low.png"
-                    alt="Desktop" />
-                <img *ngSwitchCase="'laptop'" class="w-20" src="../../../../../assets/images/Laptop_low.png"
-                    alt="Laptop" />
-                <img *ngSwitchCase="'workstation'" class="w-20" src="../../../../../assets/images/workstation_low.png"
-                    alt="Workstation" />
-                <img *ngSwitchDefault class="w-20" src="../../../../../assets/images/web-icon-placeholder-3.svg"
-                    alt="Default" />
-            </ng-container>
-        </div>
-        <div class="flex flex-col col-span-4 gap-1 h-full border-0 border-red-400 min-w-0">
-            <div class="flex flex-row font-semibold justify-between items-center min-w-0">
-                <div class="flex min-w-0 truncate">{{machine.marque |
-                    uppercase}}</div>
-                <div class="flex flex-col text-right min-w-0 truncate">
-                    {{machine.reseau}}</div>
+        <div class="flex flex-row">
+            <div class="flex w-28 m-2 border-0 border-red-400">
+                <ng-container [ngSwitch]="machine.type.toLowerCase()">
+                    <img *ngSwitchCase="'desktop'" class="" src="../../../../../assets/images/desktop_low.png"
+                        alt="Desktop" />
+                    <img *ngSwitchCase="'laptop'" class="" src="../../../../../assets/images/Laptop_low.png"
+                        alt="Laptop" />
+                    <img *ngSwitchCase="'workstation'" class="" src="../../../../../assets/images/workstation_low.png"
+                        alt="Workstation" />
+                    <img *ngSwitchDefault class="w-20" src="../../../../../assets/images/web-icon-placeholder-3.svg"
+                        alt="Default" />
+                </ng-container>
             </div>
-            <div class="text-3xl font-semibold min-w-0 truncate">
-                {{machine.modele}}</div>
-            <div class="font-bold min-w-0 truncate">
-                {{machine.serviceTag}}</div>
+            <div class="flex flex-col gap-1 h-full border-0 border-red-400 min-w-0 w-full">
+                <div class="flex flex-row font-semibold justify-between items-center min-w-0">
+                    <div class="flex min-w-0 truncate">{{machine.marque |
+                        uppercase}}</div>
+                    <div class="flex flex-col text-right min-w-0 truncate">
+                        {{machine.reseau}}</div>
+                </div>
+                <div class="text-3xl font-semibold min-w-0 truncate">
+                    {{machine.modele}}</div>
+                <div class="font-bold min-w-0 truncate">
+                    {{machine.serviceTag}}</div>
+            </div>
         </div>
 
         <!--------------------------------------------------------------------------------------------->
         <!--         <div class="flex flex-col col-span-2 h-full border-0 border-red-400 items-end text-right font-bold">
             {{machine.reseau}}
         </div> -->
-        <div class="col-span-6 border-0 border-red-400 min-w-0 ">
+        <div class="flex flex-col border-0 border-red-400 min-w-0 ">
             <div class="flex flex-row gap-2 items-center min-w-0">
                 <lucide-icon name="user" class="text-[#003863] w-4" />
                 <div class="flex flex-row gap-1 min-w-0 truncate"><span class="font-semibold">Assigné
@@ -141,7 +143,8 @@
         <div class="flex flex-row gap-2 items-center min-w-0">
             <lucide-icon name="barcode" class="text-[#003863] w-4" />
             <div class="flex flex-row gap-1 min-w-0 truncate"><span
-                    class="font-semibold">Vendeur:</span>{{machine.vendeur}}</div>
+                    class="font-semibold">Vendeur:</span>{{machine.vendeur}}
+            </div>
         </div>
         <!--         <div *ngIf="machine.commentaire && machine.commentaire.trim().length > 0" class="flex flex-row gap-2 min-w-0 ">
             <lucide-icon name="sticky-note" class="text-[#003863] w-4 flex-shrink-0 self-start" />
