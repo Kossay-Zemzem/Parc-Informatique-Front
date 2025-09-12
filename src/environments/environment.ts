@@ -1,3 +1,5 @@
+//This file contains variables used in production (when building the front)
+//(build with `ng build --configuration=production`)
 export const environment = {
     production: false,
     // baseURL: 'http://localhost:8080'
