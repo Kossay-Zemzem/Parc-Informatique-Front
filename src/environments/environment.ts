@@ -3,5 +3,5 @@
 export const environment = {
     production: false,
     // baseURL: 'http://localhost:8080'
-    baseURL: ''
+    baseURL: '' // Use same origin as frontend because frontend and backend are served from same origin in production
 };

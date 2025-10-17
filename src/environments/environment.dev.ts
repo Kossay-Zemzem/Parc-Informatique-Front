@@ -3,5 +3,5 @@
 export const environment = {
     production: false,
     // baseURL: ''
-    baseURL: 'http://localhost:8080'
+    baseURL: 'http://localhost:8080' //Spring Boot backend running locally
 };
