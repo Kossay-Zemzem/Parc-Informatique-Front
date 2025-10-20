@@ -13,7 +13,7 @@ import { ExportWizardDialogComponent } from '../export-wizard-dialog/export-wiza
 })
 export class HeaderComponent {
 
-  @Input() title: string = 'TITLE';
+  title: string = 'TITLE';
   isEditMode: boolean = false;
   isSubTitle: boolean = false;
   showReturnButton: boolean = false;

@@ -37,12 +37,11 @@ export class MachineListComponent {
   data: Array<Machine> = [];
   loading: boolean = true;
 
-  private subscription: Subscription = new Subscription(); //subscription pour le comite selectionne
+  private subscription: Subscription = new Subscription();
 
   constructor(private MachineServ: MachineService,
     private LocationServ: LocationService
   ) { }
-  //   private ComiteFilterServ: MembreFilterServiceService) { }
 
   ngOnInit(): void {
     //Subscribe to loaction changes

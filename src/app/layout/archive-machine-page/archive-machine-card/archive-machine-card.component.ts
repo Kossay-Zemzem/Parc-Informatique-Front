@@ -48,7 +48,7 @@ export class ArchiveMachineCardComponent {
   ngOnInit(): void {
     // console.log("MachineCardComponent initialized with machine:", this.machine);
   }
-  ngOnChanges(changes: SimpleChanges): void { //methode qui permet de detecter les changements des donnees des membres
+  ngOnChanges(changes: SimpleChanges): void { //methode qui permet de detecter les changements des donnees
     if (changes['machine']) {
       this.machine = changes['machine'].currentValue;
     }

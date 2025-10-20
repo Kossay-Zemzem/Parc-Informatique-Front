@@ -33,11 +33,11 @@ export class ArchiveMachinePageComponent {
   ]
   loading: boolean = true;
 
-  private subscription: Subscription = new Subscription(); //subscription pour le comite selectionne
+  private subscription: Subscription = new Subscription();
 
   constructor(private MachineServ: MachineService
   ) { }
-  //   private ComiteFilterServ: MembreFilterServiceService) { }
+
 
   ngOnInit(): void {
     //Subscribe to loaction changes
