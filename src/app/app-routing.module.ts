@@ -8,7 +8,7 @@ import { ArchiveMachinePageComponent } from './layout/archive-machine-page/archi
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
-  { path: "auth", component: AuthPageComponent },
+  // { path: "auth", component: AuthPageComponent },
   { path: "home", component: HomePageComponent },
   {
     path: 'machine/new',          // for creating a machine
