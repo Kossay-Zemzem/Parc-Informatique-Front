@@ -1,27 +1,34 @@
-# ParcInformatiqueFront
+# Parc Informatique Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+**Description**: This project is the Frontend of a full-stack application developed during my summer internship that allows for managing IT equipment.
 
-## Development server
+**Framework** : Angular 16
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+**Styling**: TailwindCSS
 
-## Code scaffolding
+For the full project details, [check the backend repository documentation](https://github.com/Kossay-Zemzem/Parc-Informatique-Backend) 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## 🧭 How to Run
+   
+> ⚠️ **Note:** In order for the front end to function as intended, it is recommended tp run the backend this project. Otherwise consider running the project from the backend (which servers the front end as well)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. **Clone the repository**
 
-## Running unit tests
+   ```bash
+   git clone https://github.com/Kossay-Zemzem/Parc-Informatique-Front.git
+   cd Parc-Informatique-Front
+   ```
+2. **Install NPM dependencies**
+   ```bash
+   npm install
+   ```
+   
+3. **Build and run the project **
+   ```bash
+   ng serve
+   ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+> ℹ️ This README is still under development
