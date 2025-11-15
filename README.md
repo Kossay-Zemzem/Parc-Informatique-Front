@@ -12,7 +12,8 @@ For the full project details, [check the backend repository documentation](https
 
 ## 🧭 How to Run
    
-> ⚠️ **Note:** In order for the front end to function as intended, it is recommended to run the backend this project (as it's the server that the front calls). Otherwise consider running the project from the backend (which serves the front end as well)
+> [!IMPORTANT]
+>  In order for the front end to function as intended, it is recommended to run the backend this project (as it's the server that the front calls). Otherwise consider running the project from the backend (which serves the front end as well)
 
 1. **Clone the repository**
 
@@ -31,4 +32,5 @@ For the full project details, [check the backend repository documentation](https
    ```
 
 
-> ℹ️ This README is still under development
+> [!NOTE]
+>  This README is still under development
