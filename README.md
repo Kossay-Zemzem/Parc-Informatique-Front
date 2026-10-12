@@ -9,21 +9,17 @@ For the full project details and scope, refer [the backend repository documentat
 
 **Framework** : Angular 16
 
-**Styling**: TailwindCSS 3.4.17
+**Styling**: TailwindCSS 3.4
 
 **Deployment**: After development, the frontend is compiled and served directly from the backend application server.
 
 <img width="1920" height="984" alt="home" src="https://github.com/user-attachments/assets/ba554b53-cfd0-432a-9653-6e16d9a10807" />
 <sub>*All data shown above is generic sample data used for demonstration purposes.</sub>
 
----
-
 ## 🧭 How to Run
    
 > [!IMPORTANT]
->  In order for the frontend to function as intended, it is recommended to run the backend of this project (as it's the server that the frontend calls). Otherwise you can check the frontend bu running the the backend which serves a precompiled version of the the frontend as well.
-
-For the frontend to function as intended, **the backend of the project must be running to handle API requests**. Alternatively, you can simply run the backend only, which serves a pre-compiled version of this frontend out of the box.
+> For the frontend to function as intended, **the backend of the project must be running to handle API requests**. Alternatively, you can simply run the backend only, which serves a pre-compiled version of this frontend out of the box.
 
 1. **Clone the repository**
 
